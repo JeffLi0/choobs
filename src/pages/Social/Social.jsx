@@ -352,7 +352,7 @@ function Social() {
 				setActiveSearch(false);
 				setSearchResults([]);
 				return;
-			} else if (searchedUser.trim().length < 3 || (/\d/.test(searchedUser) && searchedUser.length !== 8)) {
+			} else if (searchedUser.trim().length < 3 || (/\d/.test(searchedUser) && searchedUser.length < 8)) {
 				setActiveSearch(true);
 				setSearchResults([]);
 				return;
@@ -366,8 +366,8 @@ function Social() {
 					if (doc.id !== uid) {
 						if (searchedUser === "everyone") {
 							results.push([doc.data().name, doc.data().email, doc.id, doc.data().pfp]);
-						} else if (/^\d{2}stu\d{3}/.test(searchedUser)) {
-							if (doc.data().email.toLowerCase().substring(0, doc.data().email.toLowerCase().indexOf("@")).includes(searchedUser.toLowerCase())) {
+						} else if (/^\d{2}stu\d{3}.*/.test(searchedUser)) {
+							if (doc.data().email.toLowerCase().substring(0, doc.data().email.toLowerCase().indexOf("@")).includes(searchedUser.split('@')[0].toLowerCase())) {
 								results.push([doc.data().name, doc.data().email, doc.id, doc.data().pfp]);
 							}
 						} else {
