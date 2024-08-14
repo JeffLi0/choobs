@@ -4,6 +4,8 @@ import { getDoc, doc, setDoc, updateDoc, deleteField } from "firebase/firestore"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import styles from "./EditClasses.module.css";
 
+import CalendarExport from "../../components/CalendarExport/CalendarExport";
+
 function EditClasses() {
 	const [subject, setSubject] = useState("");
 	const [roomNumber, setRoomNumber] = useState("");
@@ -21,8 +23,10 @@ function EditClasses() {
 	const [deleteModalFade, setDeleteModalFade] = useState(false);
 
 	const [scheduleData, setScheduleData] = useState([]);
-	const [loading, setLoading] = useState(false);
 	const [uid, setUid] = useState("");
+
+	const [loading, setLoading] = useState(false);
+	const [buttonLoading, setButtonLoading] = useState(false);
 
 	const schedule = useMemo(
 		() => ({
@@ -51,6 +55,7 @@ function EditClasses() {
 
 	const addData = async () => {
 		if (selectedClasses.length > 0) {
+			setButtonLoading(true);
 			try {
 				const auth = getAuth();
 				const user = await new Promise((resolve, reject) => {
@@ -127,7 +132,8 @@ function EditClasses() {
 				setSubject("");
 				setRoomNumber("");
 				setSelectedClasses([]);
-				setShowClassesModal(false);
+				closeModal();
+				setButtonLoading(false);
 			} catch (error) {
 				console.error("Error adding/deleting documents: ", error);
 			}
@@ -136,6 +142,7 @@ function EditClasses() {
 
 	const deleteData = async () => {
 		if (selectedClasses.length > 0) {
+			setButtonLoading(true);
 			try {
 				const auth = getAuth();
 				const user = await new Promise((resolve, reject) => {
@@ -169,6 +176,7 @@ function EditClasses() {
 				setSelectedClasses([]);
 				closeDeleteModal();
 				closeModal();
+				setButtonLoading(false);
 			} catch (error) {
 				console.error("Error adding/deleting documents: ", error);
 			}
@@ -529,6 +537,7 @@ function EditClasses() {
 					</div>
 					{renderSchedule()}
 				</div>
+				<CalendarExport schoolYear={2025} scheduleData={scheduleData} />
 				{showClassesModal && (
 					<div className={`${styles.modalContainer} ${modalFade ? styles.fade : ""}`} onClick={closeModal}>
 						<div className={`${styles.modalContent}`} onClick={(e) => e.stopPropagation()}>
@@ -610,7 +619,16 @@ function EditClasses() {
 											}
 										})()}
 									>
-										Update Data
+										{buttonLoading ? (
+											<div className={`lds-ring ${styles.loadingRing}`}>
+												<div></div>
+												<div></div>
+												<div></div>
+												<div></div>
+											</div>
+										) : (
+											`Update Data`
+										)}
 									</button>
 								</div>
 							</div>
@@ -641,7 +659,18 @@ function EditClasses() {
 							</span>
 							<div>
 								<button onClick={closeDeleteModal}>Cancel</button>
-								<button onClick={deleteData}>Delete</button>
+								<button onClick={deleteData}>
+									{buttonLoading ? (
+										<div className={`lds-ring ${styles.loadingRing}`}>
+											<div></div>
+											<div></div>
+											<div></div>
+											<div></div>
+										</div>
+									) : (
+										`Delete`
+									)}
+								</button>
 							</div>
 						</div>
 					</div>
