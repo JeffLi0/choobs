@@ -69,8 +69,8 @@ h6 {
 
 div > .react-datepicker__day--selected {
 	border-radius: 0.3rem;
-	color: #000;
-	background-color: #4c5963;
+	color: #fff !important;
+	background-color: #54808c;
 	border: 2px solid #54808c !important;
 	width: calc(1.7rem - 4px);
 	line-height: calc(1.7rem - 4px);
@@ -82,6 +82,11 @@ div > .react-datepicker__day {
 	margin: 3px;
 	user-select: none;
 	-webkit-user-select: none;
+}
+
+div > .react-datepicker__day--today {
+	background-color: #4c5963;
+	border-radius: 0.3rem;
 }
 
 div > .react-datepicker__day--selected {
