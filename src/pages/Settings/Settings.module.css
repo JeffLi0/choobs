@@ -178,8 +178,8 @@
 	left: 0.2rem;
 	bottom: 0.2rem;
 	background-color: white;
-	-webkit-transition: 0.2s;
-	transition: 0.2s;
+	-webkit-transition: 0.2s all cubic-bezier(0, 0, 0, 1);
+	transition: 0.2s all cubic-bezier(0, 0, 0, 1);
 	border-radius: 50%;
 }
 
