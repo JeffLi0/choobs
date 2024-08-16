@@ -272,7 +272,7 @@ function EditClasses() {
 				return (
 					<button
 						key={id}
-						className={`${styles.scheduleItem}${(!matchingData && !isDisabled()) || (matchingData && id === "Adv" && !matchingData.classNames[1][1]) ? ` ${styles.missingData}` : ""}`}
+						className={`${styles.scheduleItem}${(!matchingData && !isDisabled()) || (matchingData && id.includes("Adv") && !matchingData.classNames[1]) ? ` ${styles.missingData}` : ""}`}
 						disabled={isDisabled()}
 						onClick={() => {
 							openModal(id);
