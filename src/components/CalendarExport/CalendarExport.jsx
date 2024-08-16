@@ -255,13 +255,13 @@ const CalendarExport = ({ schoolYear, scheduleData }) => {
 							<li>Click "Import".</li>
 						</ol>
 						<div>
-							<label className={styles.label}>
-								<input type="checkbox" checked={showRoomNumbers} onChange={(e) => setShowRoomNumbers(e.target.checked)} />
+							<div className={styles.label} onClick={() => setShowRoomNumbers(!showRoomNumbers)}>
+								<div className={`${showRoomNumbers ? styles.checked : ''}`} />
 								<div>
 									<div>Show Room Numbers in Event Name</div>
 									<span>e.g., "Math (800)", "Science (300)"</span>
 								</div>
-							</label>
+							</div>
 							<button onClick={handleExport} disabled={loading}>
 								{loading ? "Loading..." : "Download"}
 							</button>
