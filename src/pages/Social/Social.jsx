@@ -367,7 +367,7 @@ function Social() {
 						if (searchedUser === "everyone") {
 							results.push([doc.data().name, doc.data().email, doc.id, doc.data().pfp]);
 						} else if (/^\d{2}stu\d{3}.*/.test(searchedUser)) {
-							if (doc.data().email.toLowerCase().substring(0, doc.data().email.toLowerCase().indexOf("@")).includes(searchedUser.split('@')[0].toLowerCase())) {
+							if (doc.data().email.toLowerCase().substring(0, doc.data().email.toLowerCase().indexOf("@")).includes(searchedUser.split("@")[0].toLowerCase())) {
 								results.push([doc.data().name, doc.data().email, doc.id, doc.data().pfp]);
 							}
 						} else {
@@ -709,7 +709,7 @@ function Social() {
 						{activeSearch && (
 							<div className={styles.pendingFriends}>
 								{searchResults.length > 0 ? (
-									searchResults.map((user) => {
+									searchResults.sort().map((user) => {
 										return (
 											<div key={user[1]} className={styles.searchedFriend}>
 												<div>
@@ -728,6 +728,8 @@ function Social() {
 														<span className={`${"material-symbols-rounded"}`}>&#xe7f0;</span>
 														Add
 													</button>
+												) : friendData.find((friend) => friend[1] === user[2])[2] !== 0 ? (
+													<button disabled={true}>Pending</button>
 												) : (
 													<button disabled={true}>Added</button>
 												)}
