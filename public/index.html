@@ -34,8 +34,7 @@
 	<body>
 		<div id="root"></div>
 		<script>
-			const element = document.getElementById("root");
-			element.addEventListener("touchstart", (e) => {
+			document.getElementById("root").addEventListener("touchstart", (e) => {
 				if (e.touches[0].pageX > 10 && e.touches[0].pageX < window.innerWidth - 10) {
 					return;
 				}
