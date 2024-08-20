@@ -627,7 +627,7 @@ div > .button > span {
 	gap: 0.5rem;
 }
 
-div > .button > span > div {
+.friendItem.button > span > div {
 	width: 2.5rem;
 	height: 2.5rem;
 	line-height: 2.5rem;
@@ -685,6 +685,11 @@ div:not(.desktopSocial) > div > .button > span > div:active {
 
 .desktopSocial .scheduleContainer > div:last-child > div:last-child > div:global(.lds-ring) {
 	left: auto;
+}
+
+/* .schedule > div.ul > span.subtext */
+.social > .scheduleContainer > div:last-child > div:last-child > span {
+	bottom: 1rem !important;
 }
 
 @supports (-webkit-touch-callout: none) {

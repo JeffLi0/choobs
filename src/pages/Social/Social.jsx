@@ -728,10 +728,10 @@ function Social() {
 														<span className={`${"material-symbols-rounded"}`}>&#xe7f0;</span>
 														Add
 													</button>
-												) : friendData.find((friend) => friend[1] === user[2])[2] !== 0 ? (
-													<button disabled={true}>Pending</button>
-												) : (
+												) : friendData.find((friend) => friend[1] === user[2])[2] === 0 || friendData.find((friend) => friend[1] === user[2])[2] === 3 ? (
 													<button disabled={true}>Added</button>
+												) : (
+													<button disabled={true}>Pending</button>
 												)}
 											</div>
 										);
