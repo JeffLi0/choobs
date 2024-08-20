@@ -1,0 +1,27 @@
+@supports (-webkit-touch-callout: none) {
+	span.subtext {
+		bottom: calc(env(safe-area-inset-bottom) + 2rem + 4rem) !important;
+	}
+}
+
+span.subtext {
+	position: absolute;
+	bottom: 2rem;
+	transition: all 0.2s;
+	margin-top: 0.5rem;
+	color: #d7e2ec70;
+	font-size: small;
+	text-align: center;
+    display: none;
+}
+
+.img {
+	max-width: 80%;
+	transition: all 0.2s;
+	margin: 2rem 0;
+    display: none;
+}
+
+.visible {
+    display: block !important;
+}

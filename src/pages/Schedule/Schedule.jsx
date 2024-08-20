@@ -7,6 +7,8 @@ import { doc, getDoc } from "firebase/firestore";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+import Artwork from "../../components/Artwork/Artwork";
+
 function Schedule(props) {
 	const [displayDate, setDisplayDate] = useState(() => {
 		if (sessionStorage.getItem("displayDate")) {
@@ -159,6 +161,7 @@ function Schedule(props) {
 			setDisplayDate(newDate);
 			setBlocksRendered([]);
 			setCurrentDay("");
+			setEvents([]);
 		},
 		[displayDate]
 	);
@@ -434,6 +437,7 @@ function Schedule(props) {
 								sessionStorage.setItem("displayDate", date);
 								setDisplayDate(date);
 								setCurrentDay("");
+								setEvents([]);
 							} else {
 								setTimeout(() => {
 									if (highlighted && highlighted.current) {
@@ -490,6 +494,7 @@ function Schedule(props) {
 							setBlocksRendered([]);
 							setDisplayDate(date);
 							setCurrentDay("");
+							setEvents([]);
 						}}
 						customInput={<OpenDatePicker />}
 					/>
@@ -807,13 +812,14 @@ function Schedule(props) {
 								);
 							})
 					)}
+					<Artwork loading={loading} events={events} fullDayEvent={fullDayEvent} />
 					{fullDayEvent && currentDay && currentDay.includes("Half Day") && !loading && (
 						<div className={styles.subtext}>
 							<span>
 								<b>1st Lunch:</b> Math & Language Buildings
 							</span>
 							<span>
-								<b>2nd Lunch:</b> Main & Science Buildings{" "}
+								<b>2nd Lunch:</b> Main & Science Buildings
 							</span>
 						</div>
 					)}

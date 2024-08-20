@@ -9,6 +9,13 @@ const urlsToCache = [
 	"/static/maskable_icon_x144.png",
 	"/static/maskable_icon_x192.png",
 	"/static/maskable_icon_x512.png",
+	"/static/artwork/campfire.png",
+	"/static/artwork/cello.png",
+	"/static/artwork/fishing.png",
+	"/static/artwork/nothing.png",
+	"/static/artwork/reading.png",
+	"/static/artwork/sleeping.png",
+	"/static/artwork/stargazing.png",
 ];
 
 self.addEventListener("install", (event) => {
