@@ -246,8 +246,8 @@ function Login(props) {
 							<form>
 								<div className={styles.loginContainer}>
 									<h2>Create an account</h2>
-									<input type="text" placeholder="First Name" value={firstName} className={styles.input} onChange={(e) => setFirstName(e.target.value.replace(/[^a-zA-Z]/g, ''))} />
-									<input type="text" placeholder="Last Name" value={lastName} className={styles.input} onChange={(e) => setLastName(e.target.value.replace(/[^a-zA-Z]/g, ''))} />
+									<input type="text" placeholder="First Name" value={firstName} className={styles.input} onChange={(e) => setFirstName(e.target.value.replace(/[^a-zA-Z ]/g, ""))} />
+									<input type="text" placeholder="Last Name" value={lastName} className={styles.input} onChange={(e) => setLastName(e.target.value.replace(/[^a-zA-Z ]/g, ""))} />
 									<input type="email" placeholder="Email" value={email} className={styles.input} onChange={handleEmailAutofill} />
 									<input type="password" placeholder="Password" value={password} autoComplete="new-password" className={styles.input} onChange={(e) => setPassword(e.target.value)} />
 									<input

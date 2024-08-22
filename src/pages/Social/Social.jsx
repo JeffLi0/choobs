@@ -709,33 +709,35 @@ function Social() {
 						{activeSearch && (
 							<div className={styles.pendingFriends}>
 								{searchResults.length > 0 ? (
-									searchResults.sort().map((user) => {
-										return (
-											<div key={user[1]} className={styles.searchedFriend}>
-												<div>
-													<PFP pfp={user[3]} size={2.5} />
+									searchResults
+										.sort((a, b) => a[0].toLowerCase().localeCompare(b[0].toLowerCase()))
+										.map((user) => {
+											return (
+												<div key={user[1]} className={styles.searchedFriend}>
 													<div>
-														<span>{user[0]}</span>
-														<span>{user[1]}</span>
+														<PFP pfp={user[3]} size={2.5} />
+														<div>
+															<span>{user[0]}</span>
+															<span>{user[1]}</span>
+														</div>
 													</div>
+													{!friendData.some((friend) => friend[1] === user[2]) ? (
+														<button
+															onClick={() => {
+																sendRequest(user[2]);
+															}}
+														>
+															<span className={`${"material-symbols-rounded"}`}>&#xe7f0;</span>
+															Add
+														</button>
+													) : friendData.find((friend) => friend[1] === user[2])[2] === 0 || friendData.find((friend) => friend[1] === user[2])[2] === 3 ? (
+														<button disabled={true}>Added</button>
+													) : (
+														<button disabled={true}>Pending</button>
+													)}
 												</div>
-												{!friendData.some((friend) => friend[1] === user[2]) ? (
-													<button
-														onClick={() => {
-															sendRequest(user[2]);
-														}}
-													>
-														<span className={`${"material-symbols-rounded"}`}>&#xe7f0;</span>
-														Add
-													</button>
-												) : friendData.find((friend) => friend[1] === user[2])[2] === 0 || friendData.find((friend) => friend[1] === user[2])[2] === 3 ? (
-													<button disabled={true}>Added</button>
-												) : (
-													<button disabled={true}>Pending</button>
-												)}
-											</div>
-										);
-									})
+											);
+										})
 								) : searchedUser.length < 3 ? (
 									<>Search must be at least 3 characters.</>
 								) : (
