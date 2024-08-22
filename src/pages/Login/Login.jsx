@@ -46,7 +46,7 @@ function Login(props) {
 	const handleSignup = async (e) => {
 		e.preventDefault();
 		setLoading(true);
-		if (!firstName || !lastName || !email || !password || !confirmPassword) {
+		if (!firstName.trim() || !lastName.trim() || !email || !password || !confirmPassword) {
 			setErrorMessage("Please fill in all required fields.");
 			setLoading(false);
 			return;
