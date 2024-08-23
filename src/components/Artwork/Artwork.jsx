@@ -2,7 +2,7 @@ import { useEffect, useState, useMemo } from "react";
 import styles from "./Artwork.module.css";
 
 function Artwork(props) {
-	const artwork = useMemo(() => ["campfire", "cello", "fishing", "nothing", "reading", "sleeping", "stargazing", "jammin"], []);
+	const artwork = useMemo(() => ["campfire", "cello", "fishing", "nothing", "reading", "sleeping", "stargazing", "jammin", "plane"], []);
 
 	const [selectedArt, setSelectedArt] = useState(null);
 	const [recentArt, setRecentArt] = useState([]);
