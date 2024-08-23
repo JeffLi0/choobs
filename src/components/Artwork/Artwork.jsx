@@ -21,7 +21,7 @@ function Artwork(props) {
 			setSelectedArt(newArt);
 			setRecentArt((prev) => {
 				const updatedRecent = [newArt, ...prev];
-				return updatedRecent.slice(0, 4);
+				return updatedRecent.slice(0, 5);
 			});
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
