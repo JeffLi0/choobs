@@ -26,7 +26,7 @@ function LandingPage({ isPWA }) {
 		<>
 			<div className={styles.page}>
 				<div className={styles.logoWrapper}>
-					<img className={styles.logo} src={process.env.PUBLIC_URL + "/static/maskable_icon_x512.png"} alt="logo" />
+					<img className={styles.logo} src={process.env.PUBLIC_URL + "/static/img/maskable_icon_x512.png"} alt="logo" />
 					<h4>choobs.app</h4>
 				</div>
 				<div className={styles.schedulingSimplified}>
@@ -51,9 +51,9 @@ function LandingPage({ isPWA }) {
 					)}
 				</div>
 				{isMobile ? (
-					<img className={styles.screenshot} src={process.env.PUBLIC_URL + "/static/screenshot_mobile.png"} alt="screenshot" />
+					<img className={styles.screenshot} src={process.env.PUBLIC_URL + "/static/img/screenshot_mobile.png"} alt="screenshot" />
 				) : (
-					<img className={`${styles.screenshot} ${styles.desktop}`} src={process.env.PUBLIC_URL + "/static/screenshot_desktop.png"} alt="screenshot" />
+					<img className={`${styles.screenshot} ${styles.desktop}`} src={process.env.PUBLIC_URL + "/static/img/screenshot_desktop.png"} alt="screenshot" />
 				)}
 			</div>
 		</>
