@@ -22,8 +22,26 @@
 		"web-vitals": "^2.1.4"
 	},
 	"scripts": {
+		"build-rename": "npm run build-rename-js && npm run build-rename-css && npm run build-fix-references",
+		"build-rename-js": "renamer --find \"/main\\.[^\\.]+\\./i\" --replace \"main.\" build/static/js/*",
+		"build-rename-css": "renamer --find \"/main\\.[^\\.]+\\./i\" --replace \"main.\" build/static/css\/*",
+		"build-fix-references": "npm run build-fix-sourcemap && npm run build-fix-index && npm run build-fix-serviceworker && npm run build-fix-assetmanifest",
+		"build-fix-sourcemap": "npm run build-fix-sourcemap-js && npm run build-fix-sourcemap-css",
+		"build-fix-sourcemap-js": "replace-in-file \"/sourceMappingURL=main\\.[^\\.]+\\.js\\.map/i\" \"sourceMappingURL=main.js.map\" build/static/js/main.js --isRegex",
+		"build-fix-sourcemap-css": "replace-in-file \"/sourceMappingURL=main\\.[^\\.]+\\.css\\.map/i\" \"sourceMappingURL=main.css.map\" build/static/css/main.css --isRegex",
+		"build-fix-index": "npm run build-fix-index-js && npm run build-fix-index-css",
+		"build-fix-index-js": "replace-in-file \"/main\\.[^\\.]+\\.js/i\" \"main.js\" build/index.html --isRegex",
+		"build-fix-index-css": "replace-in-file \"/main\\.[^\\.]+\\.css/i\" \"main.css\" build/index.html --isRegex",
+		"build-fix-serviceworker": "npm run build-fix-serviceworker-js && npm run build-fix-serviceworker-css",
+		"build-fix-serviceworker-js": "replace-in-file \"/main\\.[^\\.]+\\.js/i\" \"main.js\" build/service-worker.js --isRegex",
+		"build-fix-serviceworker-css": "replace-in-file \"/main\\.[^\\.]+\\.css/i\" \"main.css\" build/service-worker.js --isRegex",
+		"build-fix-assetmanifest": "npm run build-fix-assetmanifest-js && npm run build-fix-assetmanifest-css && npm run build-fix-assetmanifest-js-map && npm run build-fix-assetmanifest-css-map",
+		"build-fix-assetmanifest-js": "replace-in-file \"/main\\.[^\\.]+\\.js/ig\" \"main.js\" build/asset-manifest.json --isRegex",
+		"build-fix-assetmanifest-css": "replace-in-file \"/main\\.[^\\.]+\\.css/ig\" \"main.css\" build/asset-manifest.json --isRegex",
+		"build-fix-assetmanifest-js-map": "replace-in-file \"/main\\.[^\\.]+\\.js\\.map/i\" \"main.js.map\" build/asset-manifest.json --isRegex",
+		"build-fix-assetmanifest-css-map": "replace-in-file \"/main\\.[^\\.]+\\.css\\.map/i\" \"main.css.map\" build/asset-manifest.json --isRegex",
 		"start": "react-scripts start",
-		"build": "GENERATE_SOURCEMAP=false react-scripts build",
+		"build": "GENERATE_SOURCEMAP=false react-scripts build && npm run build-rename",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},
@@ -44,5 +62,9 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
+	},
+	"devDependencies": {
+		"renamer": "^5.0.2",
+		"replace-in-file": "^8.1.0"
 	}
 }
