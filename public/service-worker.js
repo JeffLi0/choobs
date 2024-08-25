@@ -1,4 +1,5 @@
-const CACHE_NAME = "choobs-app-cache-v1";
+const CACHE_NAME = "choobs-app-cache-v0";
+
 const urlsToCache = [
 	"/",
 	"/index.html",
@@ -9,13 +10,6 @@ const urlsToCache = [
 	"/static/img/maskable_icon_x144.png",
 	"/static/img/maskable_icon_x192.png",
 	"/static/img/maskable_icon_x512.png",
-	"/static/artwork/campfire.png",
-	"/static/artwork/cello.png",
-	"/static/artwork/fishing.png",
-	"/static/artwork/nothing.png",
-	"/static/artwork/reading.png",
-	"/static/artwork/sleeping.png",
-	"/static/artwork/stargazing.png",
 ];
 
 self.addEventListener("install", (event) => {
@@ -23,34 +17,44 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
-	event.respondWith(
-		caches
-			.match(event.request)
-			.then((response) => {
-				if (response) {
-					return response;
-				}
-				return fetch(event.request).then((response) => {
-					// Check if we received a valid response
-					if (!response || response.status !== 200 || response.type !== "basic") {
-						return response;
-					}
-
-					// Clone the response
-					const responseToCache = response.clone();
-
-					caches.open(CACHE_NAME).then((cache) => {
-						cache.put(event.request, responseToCache);
-					});
-
-					return response;
+	if (event.request.url.includes("/static/artwork/")) {
+		event.respondWith(
+			caches.open(CACHE_NAME).then((cache) => {
+				return cache.match(event.request).then((response) => {
+					return (
+						response ||
+						fetch(event.request).then((response) => {
+							cache.put(event.request, response.clone());
+							return response;
+						})
+					);
 				});
 			})
-			.catch(() => {
-				// If both cache and network fail, show a generic fallback:
-				return caches.match("/offline.html");
-			})
-	);
+		);
+	} else {
+		event.respondWith(
+			caches
+				.match(event.request)
+				.then((response) => {
+					if (response) {
+						return response;
+					}
+					return fetch(event.request).then((response) => {
+						if (!response || response.status !== 200 || response.type !== "basic") {
+							return response;
+						}
+						const responseToCache = response.clone();
+						caches.open(CACHE_NAME).then((cache) => {
+							cache.put(event.request, responseToCache);
+						});
+						return response;
+					});
+				})
+				.catch(() => {
+					return caches.match("/offline.html");
+				})
+		);
+	}
 });
 
 self.addEventListener("activate", (event) => {

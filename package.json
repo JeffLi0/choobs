@@ -24,7 +24,7 @@
 	"scripts": {
 		"build-rename": "npm run build-rename-js && npm run build-rename-css && npm run build-fix-references",
 		"build-rename-js": "renamer --find \"/main\\.[^\\.]+\\./i\" --replace \"main.\" build/static/js/*",
-		"build-rename-css": "renamer --find \"/main\\.[^\\.]+\\./i\" --replace \"main.\" build/static/css\/*",
+		"build-rename-css": "renamer --find \"/main\\.[^\\.]+\\./i\" --replace \"main.\" build/static/css/*",
 		"build-fix-references": "npm run build-fix-sourcemap && npm run build-fix-index && npm run build-fix-serviceworker && npm run build-fix-assetmanifest",
 		"build-fix-sourcemap": "npm run build-fix-sourcemap-js && npm run build-fix-sourcemap-css",
 		"build-fix-sourcemap-js": "replace-in-file \"/sourceMappingURL=main\\.[^\\.]+\\.js\\.map/i\" \"sourceMappingURL=main.js.map\" build/static/js/main.js --isRegex",
@@ -40,8 +40,9 @@
 		"build-fix-assetmanifest-css": "replace-in-file \"/main\\.[^\\.]+\\.css/ig\" \"main.css\" build/asset-manifest.json --isRegex",
 		"build-fix-assetmanifest-js-map": "replace-in-file \"/main\\.[^\\.]+\\.js\\.map/i\" \"main.js.map\" build/asset-manifest.json --isRegex",
 		"build-fix-assetmanifest-css-map": "replace-in-file \"/main\\.[^\\.]+\\.css\\.map/i\" \"main.css.map\" build/asset-manifest.json --isRegex",
+		"update-service-worker": "node updateServiceWorker.js",
+		"build": "GENERATE_SOURCEMAP=false react-scripts build && npm run build-rename && npm run update-service-worker",
 		"start": "react-scripts start",
-		"build": "GENERATE_SOURCEMAP=false react-scripts build && npm run build-rename",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},
