@@ -708,10 +708,10 @@ function Schedule(props) {
 																	</i>
 																</p>
 															</div>
-															{(/[A-Za-z]\$?[0-9]/g.test(event.summary) || event.summary === "Advisory") && (
+															{(/[A-Za-z]\$?[0-9]/g.test(event.summary) || event.summary.includes("Adv")) && (
 																<div className={styles.info}>
 																	<h4>{/^\d+$/.test(matchingData.classNames[1]) ? `Room ${matchingData.classNames[1]}` : matchingData.classNames[1]}</h4>
-																	{event.summary !== "Advisory" && (
+																	{!event.summary.includes("Adv") && (
 																		<p>
 																			<i>{event.summary}</i>
 																		</p>
