@@ -49,7 +49,7 @@ const InstallPage = ({ setIsPWA }) => {
 				<p>Back</p>
 			</Link>
 			<div className={styles.logoWrapper}>
-				<img className={styles.logo} src={process.env.PUBLIC_URL + "/static/img/maskable_icon_x512.png"} alt="logo" />
+				<img className={styles.logo} src={process.env.PUBLIC_URL + "/static/maskable_icon_x512.png"} alt="logo" />
 				<h4>choobs</h4>
 			</div>
 			<h2>Install choobs.app</h2>

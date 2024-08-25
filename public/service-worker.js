@@ -7,9 +7,9 @@ const urlsToCache = [
 	"/static/css/main.css",
 	"/static/js/main.js",
 	"/static/js/748.97b78b63.chunk.js",
-	"/static/img/maskable_icon_x144.png",
-	"/static/img/maskable_icon_x192.png",
-	"/static/img/maskable_icon_x512.png",
+	"/static/maskable_icon_x144.png",
+	"/static/maskable_icon_x192.png",
+	"/static/maskable_icon_x512.png",
 ];
 
 self.addEventListener("install", (event) => {
