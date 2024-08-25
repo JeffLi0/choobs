@@ -645,15 +645,7 @@ function Schedule(props) {
 								const isHalfDay = fullDayEvent.some((element) => element.includes("Half Day"));
 
 								const matchingData = scheduleData.find((data) => {
-									if (isHalfDay) {
-										// Try [letter]$[number] first
-										const summaryWithDollar = event.summary.replace(/([A-Z])(\d+)/, "$1$$$2");
-
-										return data.block.includes(summaryWithDollar) || data.block.includes(event.summary);
-									} else {
-										// Not a half day, just check for event.summary
-										return event.summary.includes(data.block);
-									}
+									return event.summary.includes(data.block);
 								});
 
 								if (isHalfDay) {
