@@ -27,7 +27,7 @@ function LandingPage({ isPWA }) {
 			<div className={styles.page}>
 				<div className={styles.logoWrapper}>
 					<img className={styles.logo} src={process.env.PUBLIC_URL + "/static/maskable_icon_x512.png"} alt="logo" />
-					<h4>choobs</h4>
+					<h4>choobs.app</h4>
 				</div>
 				<div className={styles.schedulingSimplified}>
 					<h2>Scheduling, simplified.</h2>

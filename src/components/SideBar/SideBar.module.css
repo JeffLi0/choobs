@@ -38,7 +38,8 @@
 
 .settings {
 	height: 100vh;
-	width: calc(min(22rem, 25vw) + 22rem + 1vw);
+	width: calc(min(22rem, 25vw) + 22rem + 1vw - calc(min(22rem, 25vw) - 13rem));
+	margin-right: calc(min(22rem, 25vw) - 13rem);
 	max-width: calc(47rem + 1vw);
 }
 

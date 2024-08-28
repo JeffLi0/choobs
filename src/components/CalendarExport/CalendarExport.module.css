@@ -116,7 +116,8 @@
 
 .link {
 	color: #80a4ae;
-	text-decoration: none;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 2px;
 }
 
 .modalContent > div:last-child {
