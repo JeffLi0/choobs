@@ -207,6 +207,6 @@ button > .loadingRing {
 button > .loadingRing > div {
 	height: 1rem;
 	width: 1rem;
-	border: 3px solid white;
-	border-color: white transparent transparent transparent;
+	border: 3px solid #d7e2ec;
+	border-color: #d7e2ec transparent transparent transparent;
 }
