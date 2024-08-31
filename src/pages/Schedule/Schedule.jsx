@@ -750,7 +750,7 @@ function Schedule(props) {
 														{/[A-Za-z]\$?[0-9]/g.test(event.summary) && (
 															<div className={styles.warning}>
 																<span className={`${"material-symbols-rounded"}`}>&#xe000;</span>
-																<span>This block is missing data</span>
+																<span>This block is missing data.</span>
 															</div>
 														)}
 														<div className={styles.blockContent}>
