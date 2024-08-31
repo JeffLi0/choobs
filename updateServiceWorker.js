@@ -24,7 +24,7 @@ fs.readFile(serviceWorkerPath, "utf8", (err, data) => {
 				console.error("Error writing service-worker.js:", err);
 				return;
 			}
-			console.log(`Service worker cache name updated successfully from "${currentCacheName}" to "${newCacheName}".`);
+			console.log(`Service worker cache name set to "${newCacheName}".\n`);
 		});
 	} else {
 		console.error("Could not find CACHE_NAME in service-worker.js");
