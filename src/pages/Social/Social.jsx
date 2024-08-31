@@ -1,7 +1,7 @@
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { db } from "../../firebase";
-import { getDoc, doc, updateDoc, deleteField, collection, getDocs } from "firebase/firestore";
+import { getDoc, doc, updateDoc, deleteField, collection, getDocs, query, where, documentId } from "firebase/firestore";
 import axios from "axios";
 
 import Schedule from "../Schedule/Schedule";
@@ -108,21 +108,34 @@ function Social() {
 	useEffect(() => {
 		const fetchScheduleData = async () => {
 			try {
-				console.log("[Social] fetchScheduleData");
-				const querySnapshot = await getDocs(collection(db, "users"));
-				querySnapshot.forEach((doc) => {
-					if (friendData.some((friend) => friend[1] === doc.id && (friend[2] === 0 || friend[2] === 3))) {
-						const scheduleData = Object.entries(doc.data().classes).map(([block, classNames]) => ({
-							block,
-							classNames,
-						}));
+				const relevantFriendUIDs = friendData.filter((friend) => friend[2] === 0 || friend[2] === 3).map((friend) => friend[1]);
+				let readCount = 0;
 
-						setFriendSchedules((prevFriendSchedules) => ({
-							...prevFriendSchedules,
-							[doc.id]: scheduleData,
-						}));
+				if (relevantFriendUIDs.length !== 0) {
+					const newFriendSchedules = {};
+
+					for (let i = 0; i < relevantFriendUIDs.length; i += 30) {
+						const chunk = relevantFriendUIDs.slice(i, i + 30);
+						const q = query(collection(db, "users"), where(documentId(), "in", chunk));
+						const querySnapshot = await getDocs(q);
+						readCount++;
+
+						querySnapshot.forEach((doc) => {
+							const scheduleData = Object.entries(doc.data().classes || {}).map(([block, classNames]) => ({
+								block,
+								classNames,
+							}));
+
+							newFriendSchedules[doc.id] = scheduleData;
+						});
 					}
-				});
+
+					setFriendSchedules((prevFriendSchedules) => ({
+						...prevFriendSchedules,
+						...newFriendSchedules,
+					}));
+				}
+				console.log(`[Social] fetchScheduleData (${readCount})`);
 			} catch (error) {
 				console.error("Error fetching schedule data:", error);
 			}
@@ -203,28 +216,40 @@ function Social() {
 				const userRef = doc(db, "users", uid);
 				const dataSnapshot = (await getDoc(userRef)).data();
 
-				if (dataSnapshot.friends) {
-					var count = 0;
-					const friendDataPromises = Object.entries(dataSnapshot.friends).map(async ([friendUID, status, photo]) => {
-						const friendUserRef = doc(db, "users", friendUID);
-						const friendDataSnapshot = await getDoc(friendUserRef);
-						const friendName = friendDataSnapshot.data().name;
-						const friendPhoto = friendDataSnapshot.data().pfp;
-						count++;
+				const friendUIDs = Object.keys(dataSnapshot.friends || {});
 
-						return [friendName, friendUID, status, friendPhoto];
-					});
+				let readCount = 0;
 
-					const friendData = await Promise.all(friendDataPromises);
+				if (friendUIDs.length > 0) {
+					let friendData = [];
+
+					for (let i = 0; i < friendUIDs.length; i += 30) {
+						const chunk = friendUIDs.slice(i, i + 30);
+						const q = query(collection(db, "users"), where(documentId(), "in", chunk));
+						const friendsDocsSnap = await getDocs(q);
+
+						readCount++;
+
+						const chunkData = friendsDocsSnap.docs.map((doc) => {
+							const data = doc.data();
+							const friendUID = doc.id;
+							const status = dataSnapshot.friends[friendUID];
+							return [data.name, friendUID, status, data.pfp];
+						});
+
+						friendData = [...friendData, ...chunkData];
+					}
 
 					setFriendData(friendData);
+				} else {
+					setFriendData([]);
 				}
 
-				console.log("[Social] refreshFriendData (" + count + ")");
-
+				console.log(`[Social] refreshFriendData (${readCount})`);
 				setLoading(false);
 			} catch (error) {
 				console.error("Error fetching friend data:", error);
+				setLoading(false);
 			}
 		}
 	}, [uid]);
