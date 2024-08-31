@@ -82,6 +82,7 @@ div > .react-datepicker__day {
 	margin: 3px;
 	user-select: none;
 	-webkit-user-select: none;
+	outline: none;
 }
 
 div > .react-datepicker__day--today {
