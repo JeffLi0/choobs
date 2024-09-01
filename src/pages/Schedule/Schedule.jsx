@@ -57,7 +57,9 @@ function Schedule(props) {
 
 			if (parsedCache[dateKey]) {
 				setEvents(parsedCache[dateKey]);
-				setLoading(false);
+				if (scheduleData) {
+					setLoading(false);
+				}
 			}
 
 			try {
@@ -97,18 +99,20 @@ function Schedule(props) {
 
 					sessionStorage.setItem("events", JSON.stringify(parsedCache));
 					setEvents(currentDayEvents);
-					setLoading(false);
+					if (scheduleData) {
+						setLoading(false);
+					}
 				}
 			} catch (error) {
 				console.error("Error fetching calendar events:", error);
-				if (parsedCache[dateKey]) {
+				if (parsedCache[dateKey] && scheduleData) {
 					setLoading(false);
 				}
 			}
 		};
 
 		fetchData();
-	}, [displayDate, props.uid]);
+	}, [displayDate, scheduleData]);
 
 	useEffect(() => {
 		const unsubscribe = auth.onAuthStateChanged((user) => {
