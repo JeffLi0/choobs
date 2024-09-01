@@ -48,6 +48,18 @@ function Schedule(props) {
 	useEffect(() => {
 		const fetchData = async () => {
 			setLoading(true);
+			const dateKey = displayDate.toISOString().split("T")[0];
+			const todayKey = new Date().toISOString().split("T")[0];
+
+			const cachedData = sessionStorage.getItem("events");
+			const cacheOrder = JSON.parse(sessionStorage.getItem("cacheOrder") || "[]");
+			let parsedCache = cachedData ? JSON.parse(cachedData) : {};
+
+			if (parsedCache[dateKey]) {
+				setEvents(parsedCache[dateKey]);
+				setLoading(false);
+			}
+
 			try {
 				const response = await axios.get("https://www.googleapis.com/calendar/v3/calendars/lexingtonma.org_qud45cvitftvgc317tsd2vqctg%40group.calendar.google.com/events", {
 					params: {
@@ -55,8 +67,8 @@ function Schedule(props) {
 						singleEvents: true,
 						timeZone: "America/New_York",
 						maxResults: 20,
-						timeMin: `${displayDate.toISOString().split("T")[0]}T04:00:00-04:00`,
-						timeMax: `${displayDate.toISOString().split("T")[0]}T23:59:59-04:00`,
+						timeMin: `${dateKey}T04:00:00-04:00`,
+						timeMax: `${dateKey}T23:59:59-04:00`,
 						key: "AIzaSyBNlYH01_9Hc5S1J9vuFmu2nUqBZJNAXxs",
 					},
 				});
@@ -70,19 +82,33 @@ function Schedule(props) {
 						isFullDayEvent
 					);
 				});
-				setEvents(currentDayEvents);
 
-				if (scheduleData) {
+				if (JSON.stringify(currentDayEvents) !== JSON.stringify(parsedCache[dateKey])) {
+					parsedCache[dateKey] = currentDayEvents;
+
+					const updatedCacheOrder = [...(dateKey === todayKey ? [dateKey] : [todayKey, dateKey]), ...cacheOrder.filter((date) => date !== dateKey && date !== todayKey)].slice(0, 10);
+					sessionStorage.setItem("cacheOrder", JSON.stringify(updatedCacheOrder));
+
+					Object.keys(parsedCache).forEach((date) => {
+						if (!updatedCacheOrder.includes(date)) {
+							delete parsedCache[date];
+						}
+					});
+
+					sessionStorage.setItem("events", JSON.stringify(parsedCache));
+					setEvents(currentDayEvents);
 					setLoading(false);
 				}
 			} catch (error) {
 				console.error("Error fetching calendar events:", error);
-				fetchData();
+				if (parsedCache[dateKey]) {
+					setLoading(false);
+				}
 			}
 		};
 
 		fetchData();
-	}, [displayDate, scheduleData]);
+	}, [displayDate, props.uid]);
 
 	useEffect(() => {
 		const unsubscribe = auth.onAuthStateChanged((user) => {
