@@ -157,10 +157,8 @@ function Schedule(props) {
 					console.log("[Schedule] fetchScheduleData");
 					const scheduleDataSnapshot = (await getDoc(userRef)).data();
 
-					// Extract the 'classes' data from the snapshot
 					const classesData = scheduleDataSnapshot.classes;
 
-					// Map the 'classes' data into the 'scheduleData' array
 					const scheduleData = Object.entries(classesData).map(([block, classNames]) => ({
 						block,
 						classNames,
@@ -259,10 +257,14 @@ function Schedule(props) {
 		const endTime = new Date(event.end.dateTime);
 		const currentTime = new Date();
 
-		if (event.summary.includes("Lunch")) {
-			return currentTime >= startTime.getTime() && currentTime <= endTime.getTime();
+		if (currentTime.getHours() < 8 || (currentTime.getHours() === 8 && currentTime.getMinutes() <= 30)) {
+			return currentTime >= startTime.getTime() - 30 * 60 * 1000 && currentTime <= endTime.getTime();
 		} else {
-			return currentTime >= startTime.getTime() - 5 * 60 * 1000 && currentTime <= endTime.getTime();
+			if (event.summary.includes("Lunch")) {
+				return currentTime >= startTime.getTime() && currentTime <= endTime.getTime();
+			} else {
+				return currentTime >= startTime.getTime() - 5 * 60 * 1000 && currentTime <= endTime.getTime();
+			}
 		}
 	};
 
