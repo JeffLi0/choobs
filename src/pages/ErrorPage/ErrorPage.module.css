@@ -1,28 +1,28 @@
 .errorPage {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 3rem;
-	margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  margin-top: 10rem;
 }
 
 .errorPage > a {
-	background-color: #54808c;
-	padding: 0.5rem 1rem;
-	border-radius: 0.5rem;
-	color: white;
-	border: none;
-	font-size: 1rem;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 0.5rem;
-	transition: all 0.1s ease-in-out;
-	box-shadow: #54808c 0 2px 5rem;
-    text-decoration: none;
+  background-color: #54808c;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  transition: all 0.1s ease-in-out;
+  box-shadow: #54808c 0 2px 5rem;
+  text-decoration: none;
 }
 
 .errorPage > a:active {
-	transform: scale(0.95);
-	opacity: 0.75;
+  transform: scale(0.95);
+  opacity: 0.75;
 }
