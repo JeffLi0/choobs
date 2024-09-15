@@ -1,8 +1,8 @@
 {
-  "compilerOptions": {
-    "lib": ["DOM", "ESNext"],
-    "target": "ESNext",
-    "module": "ESNext"
-  },
-  "include": ["./src/**/*"]
+	"compilerOptions": {
+		"lib": ["DOM", "ESNext"],
+		"target": "ESNext",
+		"module": "ESNext"
+	},
+	"include": ["./src/**/*"]
 }

@@ -16,105 +16,129 @@ import Settings from "./pages/Settings/Settings";
 import Social from "./pages/Social/Social";
 
 export default function App() {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [isMobile, setIsMobile] = useState(isMobileDevice());
+	const [user, setUser] = useState(null);
+	const [loading, setLoading] = useState(true);
+	const [isMobile, setIsMobile] = useState(isMobileDevice());
 
-  const isPWA =
-    window.matchMedia("(display-mode: standalone)").matches ||
-    window.navigator.standalone ||
-    document.referrer.includes("android-app://");
+	const isPWA =
+		window.matchMedia("(display-mode: standalone)").matches ||
+		window.navigator.standalone ||
+		document.referrer.includes("android-app://");
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (!user) {
-        window.sessionStorage.clear();
-      }
-      setUser(user);
+	useEffect(() => {
+		const unsubscribe = auth.onAuthStateChanged((user) => {
+			if (!user) {
+				window.sessionStorage.clear();
+			}
+			setUser(user);
 
-      setLoading(false);
-    });
+			setLoading(false);
+		});
 
-    return () => unsubscribe();
-  }, []);
+		return () => unsubscribe();
+	}, []);
 
-  useEffect(() => {
-    if (user) {
-      console.log("[App] emailVerified", user.emailVerified);
-    }
-  }, [user]);
+	useEffect(() => {
+		if (user) {
+			console.log("[App] emailVerified", user.emailVerified);
+		}
+	}, [user]);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(isMobileDevice());
-    };
+	useEffect(() => {
+		const handleResize = () => {
+			setIsMobile(isMobileDevice());
+		};
 
-    window.addEventListener("resize", handleResize);
+		window.addEventListener("resize", handleResize);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	}, []);
 
-  function isMobileDevice() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent,
-    );
-  }
+	function isMobileDevice() {
+		return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+			navigator.userAgent,
+		);
+	}
 
-  if (loading) {
-    return (
-      <div className="lds-ring">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
-    );
-  }
+	if (loading) {
+		return (
+			<div className="lds-ring">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		);
+	}
 
-  return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          {
-            !user ? (
-              <>
-                <Route path="*" element={<Navigate to="/" replace />} />
-                <Route path="/register" element={<Login isLogin={false} />} />
-                <Route path="/login" element={<Login isLogin={true} />} />
-                {isMobile && (
-                  <Route path="/download" element={<InstallPage />} />
-                )}
-              </>
-            ) : (
-              //  user.emailVerified ?
-              <Route
-                path="/"
-                element={
-                  isMobile ? (
-                    <TabBar uid={user.uid} />
-                  ) : (
-                    <SideBar uid={user.uid} />
-                  )
-                }
-              >
-                <Route index element={<Schedule uid={user.uid} />} />
-                <Route
-                  path="/social"
-                  element={isMobile ? <Social /> : <Navigate to="/" replace />}
-                />
-                <Route path="/settings" element={<Settings uid={user.uid} />} />
-              </Route>
-            )
-            //  : (
-            // 	<Route path="/" element={<div>verify your email</div>} />
-            // )
-          }
-          <Route path="/" element={<LandingPage isPWA={isPWA} />} />
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
-      </BrowserRouter>
-    </>
-  );
+	return (
+		<>
+			<BrowserRouter>
+				<Routes>
+					{
+						!user ? (
+							<>
+								<Route
+									path="*"
+									element={<Navigate to="/" replace />}
+								/>
+								<Route
+									path="/register"
+									element={<Login isLogin={false} />}
+								/>
+								<Route
+									path="/login"
+									element={<Login isLogin={true} />}
+								/>
+								{isMobile && (
+									<Route
+										path="/download"
+										element={<InstallPage />}
+									/>
+								)}
+							</>
+						) : (
+							//  user.emailVerified ?
+							<Route
+								path="/"
+								element={
+									isMobile ? (
+										<TabBar uid={user.uid} />
+									) : (
+										<SideBar uid={user.uid} />
+									)
+								}
+							>
+								<Route
+									index
+									element={<Schedule uid={user.uid} />}
+								/>
+								<Route
+									path="/social"
+									element={
+										isMobile ? (
+											<Social />
+										) : (
+											<Navigate to="/" replace />
+										)
+									}
+								/>
+								<Route
+									path="/settings"
+									element={<Settings uid={user.uid} />}
+								/>
+							</Route>
+						)
+						//  : (
+						// 	<Route path="/" element={<div>verify your email</div>} />
+						// )
+					}
+					<Route path="/" element={<LandingPage isPWA={isPWA} />} />
+					<Route path="*" element={<ErrorPage />} />
+				</Routes>
+			</BrowserRouter>
+		</>
+	);
 }

@@ -1,427 +1,428 @@
 .settings {
-  padding: 1rem 1.5rem;
-  margin: 5rem 0;
-  display: flex;
-  gap: 1rem;
-  flex-direction: column;
+	padding: 1rem 1.5rem;
+	margin: 5rem 0;
+	display: flex;
+	gap: 1rem;
+	flex-direction: column;
 }
 
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  margin: 0;
-  padding: 1rem 7vw;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  width: 86vw;
-  height: 3rem;
-  z-index: 11;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 1rem 7vw;
+	background: rgba(255, 255, 255, 0.05);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	width: 86vw;
+	height: 3rem;
+	z-index: 11;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 }
 
 .header.desktop {
-  padding: 3rem 0 1rem;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  height: 3rem;
-  z-index: 10;
-  position: unset;
-  width: 100%;
-  background: none;
+	padding: 3rem 0 1rem;
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+	height: 3rem;
+	z-index: 10;
+	position: unset;
+	width: 100%;
+	background: none;
 }
 
 .settings.desktop {
-  margin-top: 0;
-  padding: 0 0 3rem;
+	margin-top: 0;
+	padding: 0 0 3rem;
 }
 
 @supports (-webkit-touch-callout: none) {
-  .settings {
-    margin-top: env(safe-area-inset-top);
-  }
+	.settings {
+		margin-top: env(safe-area-inset-top);
+	}
 
-  .mobileModal > .modalContent {
-    margin-top: calc(env(safe-area-inset-top)) !important;
-  }
+	.mobileModal > .modalContent {
+		margin-top: calc(env(safe-area-inset-top)) !important;
+	}
 }
 
 .userInfo {
-  display: flex;
-  gap: 1rem;
+	display: flex;
+	gap: 1rem;
 }
 
 .userInfo > div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 0.5rem;
 }
 
 .name,
 .name > form {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
 }
 
 .editButton {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-  font-size: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+	font-size: 0.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .editButton > span {
-  font-size: 1.2rem;
+	font-size: 1.2rem;
 }
 
 .userInfo > button > img {
-  border-radius: 50%;
-  width: 4rem;
-  height: 4rem;
+	border-radius: 50%;
+	width: 4rem;
+	height: 4rem;
 }
 
 .pfp {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
-  outline: inherit;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-user-select: none;
-  user-select: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-user-select: none;
+	user-select: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
 }
 
 .pfp > span {
-  background-color: rgb(51, 54, 60);
-  border-radius: 50%;
-  position: absolute;
-  transform: translate(1.5rem, 1.5rem);
-  width: 1.5rem;
-  height: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
+	background-color: rgb(51, 54, 60);
+	border-radius: 50%;
+	position: absolute;
+	transform: translate(1.5rem, 1.5rem);
+	width: 1.5rem;
+	height: 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1rem;
 }
 
 .category {
-  border: 1px rgb(255 255 255 / 30%);
-  border-style: solid none;
-  padding: 1rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+	border: 1px rgb(255 255 255 / 30%);
+	border-style: solid none;
+	padding: 1rem 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
 }
 
 .setting {
-  background-color: rgba(255, 255, 255, 0.05);
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  display: flex;
-  justify-content: space-between;
-  line-height: 1.5rem;
-  align-items: center;
+	background-color: rgba(255, 255, 255, 0.05);
+	padding: 0.75rem 1rem;
+	border-radius: 0.5rem;
+	display: flex;
+	justify-content: space-between;
+	line-height: 1.5rem;
+	align-items: center;
 }
 
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 2.5rem;
-  min-width: 2.5rem;
-  height: 1.5rem;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	position: relative;
+	display: inline-block;
+	width: 2.5rem;
+	min-width: 2.5rem;
+	height: 1.5rem;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-  margin: 0;
+	opacity: 0;
+	width: 0;
+	height: 0;
+	margin: 0;
 }
 
 .switchSlider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #747474;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
-  border-radius: 1.5rem;
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #747474;
+	-webkit-transition: 0.2s;
+	transition: 0.2s;
+	border-radius: 1.5rem;
 }
 
 .switchSlider:before {
-  position: absolute;
-  content: "";
-  height: 1.1rem;
-  width: 1.1rem;
-  left: 0.2rem;
-  bottom: 0.2rem;
-  background-color: white;
-  -webkit-transition: 0.2s all cubic-bezier(0, 0, 0, 1);
-  transition: 0.2s all cubic-bezier(0, 0, 0, 1);
-  border-radius: 50%;
+	position: absolute;
+	content: "";
+	height: 1.1rem;
+	width: 1.1rem;
+	left: 0.2rem;
+	bottom: 0.2rem;
+	background-color: white;
+	-webkit-transition: 0.2s all cubic-bezier(0, 0, 0, 1);
+	transition: 0.2s all cubic-bezier(0, 0, 0, 1);
+	border-radius: 50%;
 }
 
 input:checked + .switchSlider {
-  background-color: #54808c;
+	background-color: #54808c;
 }
 
 input:checked + .switchSlider:before {
-  -webkit-transform: translateX(1rem);
-  -ms-transform: translateX(1rem);
-  transform: translateX(1rem);
+	-webkit-transform: translateX(1rem);
+	-ms-transform: translateX(1rem);
+	transform: translateX(1rem);
 }
 
 .logout {
-  background-color: #54808c;
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  color: white;
-  border: none;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  width: 7rem;
-  justify-content: center;
+	background-color: #54808c;
+	border-radius: 0.5rem;
+	padding: 0.5rem 1rem;
+	color: white;
+	border: none;
+	height: 2rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	width: 7rem;
+	justify-content: center;
 }
 
 .logout > span {
-  font-size: 1.2rem;
+	font-size: 1.2rem;
 }
 
 .subtext {
-  margin-bottom: 0.5rem;
-  color: #abbac7;
-  font-size: small;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+	margin-bottom: 0.5rem;
+	color: #abbac7;
+	font-size: small;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
 }
 
 .subtext > button {
-  background: none;
-  border: none;
-  color: #80a4ae;
-  font-weight: 600;
-  font-size: 14px;
-  padding: 0 6px;
-  text-decoration: none;
+	background: none;
+	border: none;
+	color: #80a4ae;
+	font-weight: 600;
+	font-size: 14px;
+	padding: 0 6px;
+	text-decoration: none;
 }
 
 .modalContainer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  opacity: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 999;
+	opacity: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .modalContainer.fade {
-  animation: fadeIn 0.2s ease-in-out forwards;
+	animation: fadeIn 0.2s ease-in-out forwards;
 }
 
 .modalContainer:not(.fade) {
-  animation: fadeOut 0.2s ease-in-out forwards;
+	animation: fadeOut 0.2s ease-in-out forwards;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 @keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
 }
 
 @keyframes slideIn {
-  from {
-    opacity: 0;
-    margin-top: 0;
-  }
-  to {
-    opacity: 1;
-    margin-top: 1;
-  }
+	from {
+		opacity: 0;
+		margin-top: 0;
+	}
+	to {
+		opacity: 1;
+		margin-top: 1;
+	}
 }
 
 @keyframes slideOut {
-  from {
-    opacity: 1;
-    margin-top: 1;
-  }
-  to {
-    opacity: 0;
-    margin-top: 0;
-  }
+	from {
+		opacity: 1;
+		margin-top: 1;
+	}
+	to {
+		opacity: 0;
+		margin-top: 0;
+	}
 }
 
 .modalContent.slide {
-  animation: slideIn 0.2s ease-in-out forwards;
+	animation: slideIn 0.2s ease-in-out forwards;
 }
 
 .modalContent:not(.slide) {
-  animation: slideOut 0.2s ease-in-out forwards;
+	animation: slideOut 0.2s ease-in-out forwards;
 }
 
 .modalContent {
-  background-color: rgb(62, 64, 69);
-  display: flex;
-  padding: 2rem;
-  border-radius: 0.5rem;
-  flex-direction: column;
-  gap: 1.5rem;
-  width: 24rem;
-  overflow: scroll;
-  max-height: 70vh;
+	background-color: rgb(62, 64, 69);
+	display: flex;
+	padding: 2rem;
+	border-radius: 0.5rem;
+	flex-direction: column;
+	gap: 1.5rem;
+	width: 24rem;
+	overflow: scroll;
+	max-height: 70vh;
 }
 
 .modalContainer.mobileModal {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
 }
 
 .modalContainer.mobileModal > div {
-  margin: 1rem;
-  width: calc(100% - 6rem);
+	margin: 1rem;
+	width: calc(100% - 6rem);
 }
 
 .modalButtons {
-  display: flex;
-  gap: 1rem;
-  flex-direction: row;
-  justify-content: flex-end;
+	display: flex;
+	gap: 1rem;
+	flex-direction: row;
+	justify-content: flex-end;
 }
 
 .modalButtons > button {
-  background-color: transparent;
-  border: none;
-  color: #9d9d9d;
+	background-color: transparent;
+	border: none;
+	color: #9d9d9d;
 }
 
 .modalButtons > button:last-child {
-  background-color: rgb(218, 54, 60);
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  color: white;
+	background-color: rgb(218, 54, 60);
+	border-radius: 0.5rem;
+	padding: 0.5rem 1rem;
+	color: white;
 }
 
 .userInfo
-  > .modalContainer
-  > .modalContent
-  > .modalButtons
-  > button:last-child {
-  background-color: #54808c;
+	> .modalContainer
+	> .modalContent
+	> .modalButtons
+	> button:last-child {
+	background-color: #54808c;
 }
 
 .pfpModal {
-  align-items: center;
+	align-items: center;
 }
 
 .modalContainer > .modalContent.pfpModal > div {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
 }
 
 .modalContainer > .modalContent.pfpModal > div > em-emoji-picker {
-  width: 100%;
-  max-height: calc(70vh - 11rem);
+	width: 100%;
+	max-height: calc(70vh - 11rem);
 }
 
 .colorPicker {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 5%;
-  width: 100%;
-  align-content: space-between;
-  height: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 5%;
+	width: 100%;
+	align-content: space-between;
+	height: 100%;
 }
 
 .colorPicker > button {
-  border: none;
-  padding: 0;
-  height: 40%;
-  width: 16%;
-  border-radius: 0.5rem;
+	border: none;
+	padding: 0;
+	height: 40%;
+	width: 16%;
+	border-radius: 0.5rem;
 }
 
 .colorPicker > button > span {
-  color: white;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  line-height: 100%;
+	color: white;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	line-height: 100%;
 }
 
 .modalContainer > .modalContent.pfpModal > div > div:last-child {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 0.5rem;
-  width: calc(100% - 7rem);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 0.5rem;
+	width: calc(100% - 7rem);
 }
 
 .save:disabled {
-  background-color: rgb(51, 54, 60) !important;
-  color: #646464 !important;
+	background-color: rgb(51, 54, 60) !important;
+	color: #646464 !important;
 }
 
 @supports (-webkit-touch-callout: none) {
-  .mobileModal > .modalContent {
-    margin-top: calc(env(safe-area-inset-top));
-  }
+	.mobileModal > .modalContent {
+		margin-top: calc(env(safe-area-inset-top));
+	}
 
-  .header {
-    padding-top: max(env(safe-area-inset-top), 2rem);
-  }
+	.header {
+		padding-top: max(env(safe-area-inset-top), 2rem);
+	}
 
-  .settings {
-    margin-top: calc(4rem + max(2rem, env(safe-area-inset-top))) !important;
-    min-height: calc(
-      100vh - 10.5rem - env(safe-area-inset-bottom) - env(safe-area-inset-top)
-    );
-    padding-bottom: calc(4rem + env(safe-area-inset-top));
-    margin-bottom: 0;
-  }
+	.settings {
+		margin-top: calc(4rem + max(2rem, env(safe-area-inset-top))) !important;
+		min-height: calc(
+			100vh - 10.5rem - env(safe-area-inset-bottom) -
+				env(safe-area-inset-top)
+		);
+		padding-bottom: calc(4rem + env(safe-area-inset-top));
+		margin-bottom: 0;
+	}
 }

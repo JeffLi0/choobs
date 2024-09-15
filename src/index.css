@@ -1,30 +1,30 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: subpixel-antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(51, 54, 60);
-  color: #d7e2ec;
-  margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+		"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+		"Helvetica Neue", sans-serif;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: rgb(51, 54, 60);
+	color: #d7e2ec;
+	margin: 0;
 }
 
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 @supports (-webkit-touch-callout: none) {
-  /* html {
+	/* html {
 		margin-top: env(safe-area-inset-top);
 	} */
-  body {
-    min-height: calc(100vh - (8.5rem + env(safe-area-inset-top)));
-  }
+	body {
+		min-height: calc(100vh - (8.5rem + env(safe-area-inset-top)));
+	}
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
 }
 /* 
 @media (min-width: 1000px) {
@@ -67,127 +67,127 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0;
+	margin: 0;
 }
 
 div > .react-datepicker__day--selected {
-  border-radius: 0.3rem;
-  color: #fff !important;
-  background-color: #54808c;
-  border: 2px solid #54808c !important;
-  width: calc(1.7rem - 4px);
-  line-height: calc(1.7rem - 4px);
+	border-radius: 0.3rem;
+	color: #fff !important;
+	background-color: #54808c;
+	border: 2px solid #54808c !important;
+	width: calc(1.7rem - 4px);
+	line-height: calc(1.7rem - 4px);
 }
 
 div > .react-datepicker__day {
-  color: #d7e2ec;
-  transition: all 0.1s ease-in-out;
-  margin: 3px;
-  user-select: none;
-  -webkit-user-select: none;
-  outline: none;
+	color: #d7e2ec;
+	transition: all 0.1s ease-in-out;
+	margin: 3px;
+	user-select: none;
+	-webkit-user-select: none;
+	outline: none;
 }
 
 div > .react-datepicker__day--today {
-  background-color: #4c5963;
-  border-radius: 0.3rem;
+	background-color: #4c5963;
+	border-radius: 0.3rem;
 }
 
 div > .react-datepicker__day--selected {
-  background-color: #4c5963 !important;
+	background-color: #4c5963 !important;
 }
 
 div > .react-datepicker__day--disabled {
-  color: #646464;
+	color: #646464;
 }
 
 div > .react-datepicker__day--disabled:hover {
-  background-color: rgb(62, 64, 69) !important;
+	background-color: rgb(62, 64, 69) !important;
 }
 
 div > .react-datepicker__day:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+	background-color: rgba(255, 255, 255, 0.05);
 }
 
 .react-datepicker__month-container {
-  background-color: rgb(62, 64, 69);
-  border-radius: 0.5rem;
+	background-color: rgb(62, 64, 69);
+	border-radius: 0.5rem;
 }
 
 div > .react-datepicker__day--keyboard-selected {
-  background-color: #0000;
+	background-color: #0000;
 }
 
 div > .react-datepicker__header {
-  background-color: #ffffff0d;
-  border: none;
+	background-color: #ffffff0d;
+	border: none;
 }
 
 .react-datepicker__current-month,
 .react-datepicker__day-name {
-  color: #d7e2ec !important;
+	color: #d7e2ec !important;
 }
 
 .react-datepicker__triangle::before,
 .react-datepicker__triangle::after {
-  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+	border-bottom-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 div > .react-datepicker {
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  border: none;
-  border-radius: 1rem;
-  background: none;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+	border: none;
+	border-radius: 1rem;
+	background: none;
 }
 
 div > .react-datepicker__day--outside-month {
-  color: #646464;
+	color: #646464;
 }
 
 .lds-ring {
-  display: inline-block;
-  position: fixed;
-  top: calc(50% - 40px);
-  left: calc(50% - 40px);
-  width: 80px;
-  height: 80px;
+	display: inline-block;
+	position: fixed;
+	top: calc(50% - 40px);
+	left: calc(50% - 40px);
+	width: 80px;
+	height: 80px;
 }
 .lds-ring div {
-  box-sizing: border-box;
-  display: block;
-  position: absolute;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
-  border: 8px solid #d7e2ec;
-  border-radius: 50%;
-  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #d7e2ec transparent transparent transparent;
+	box-sizing: border-box;
+	display: block;
+	position: absolute;
+	width: 64px;
+	height: 64px;
+	margin: 8px;
+	border: 8px solid #d7e2ec;
+	border-radius: 50%;
+	animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+	border-color: #d7e2ec transparent transparent transparent;
 }
 .lds-ring div:nth-child(1) {
-  animation-delay: -0.45s;
+	animation-delay: -0.45s;
 }
 .lds-ring div:nth-child(2) {
-  animation-delay: -0.3s;
+	animation-delay: -0.3s;
 }
 .lds-ring div:nth-child(3) {
-  animation-delay: -0.15s;
+	animation-delay: -0.15s;
 }
 @keyframes lds-ring {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }
 
 :root::-webkit-scrollbar {
-  display: none;
+	display: none;
 }
 
 *,
 ::before,
 ::after {
-  transition: all 0.2s ease;
+	transition: all 0.2s ease;
 }

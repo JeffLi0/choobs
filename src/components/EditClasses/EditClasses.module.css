@@ -1,433 +1,433 @@
 button:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .disabled:hover {
-  cursor: not-allowed;
+	cursor: not-allowed;
 }
 
 .table {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 0;
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem 0;
 }
 
 .column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 15%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 15%;
 }
 
 .schedule > .table > .column {
-  width: calc((100% - 1.5rem) / 6);
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 0 0 0.5rem 0;
+	width: calc((100% - 1.5rem) / 6);
+	background-color: rgba(255, 255, 255, 0.05);
+	border-radius: 0 0 0.5rem 0;
 }
 
 .table > .column:last-child > button:last-child:not(.cell) {
-  border-radius: 0 0 0.5rem 0;
+	border-radius: 0 0 0.5rem 0;
 }
 
 .table > .column:last-child > button:first-child:not(.cell) {
-  border-radius: 0 0.5rem 0 0;
+	border-radius: 0 0.5rem 0 0;
 }
 
 .table > .column:nth-child(2) > button:first-child:not(.cell) {
-  border-radius: 0.5rem 0 0 0;
+	border-radius: 0.5rem 0 0 0;
 }
 
 .table > .column:nth-child(2) > button:last-child:not(.cell) {
-  border-radius: 0 0 0 0.5rem;
+	border-radius: 0 0 0 0.5rem;
 }
 
 .schedule {
-  width: 100%;
+	width: 100%;
 }
 
 .editClasses {
-  border-bottom: 1px rgb(255 255 255 / 30%) solid;
+	border-bottom: 1px rgb(255 255 255 / 30%) solid;
 }
 
 .dayLabels {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 0.5rem 0.5rem 0 0;
-  display: flex;
-  justify-content: space-between;
-  line-height: 1.5rem;
-  align-items: center;
-  margin: 1rem 0 -1rem;
+	background-color: rgba(255, 255, 255, 0.05);
+	border-radius: 0.5rem 0.5rem 0 0;
+	display: flex;
+	justify-content: space-between;
+	line-height: 1.5rem;
+	align-items: center;
+	margin: 1rem 0 -1rem;
 }
 
 .dayLabels > span {
-  width: calc(((100% - 1.5rem) / 6) + 1px);
-  display: flex;
-  justify-content: center;
-  font-weight: bold;
-  border-left: 2px solid #ffffff1a;
-  line-height: 2rem;
+	width: calc(((100% - 1.5rem) / 6) + 1px);
+	display: flex;
+	justify-content: center;
+	font-weight: bold;
+	border-left: 2px solid #ffffff1a;
+	line-height: 2rem;
 }
 
 .dayLabels > span:nth-child(2) {
-  border: 1px #ffffff00;
-  border-style: solid none none;
+	border: 1px #ffffff00;
+	border-style: solid none none;
 }
 
 .scheduleItem {
-  border: 1px solid #ffffff1a;
-  height: 4rem;
-  width: 100%;
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  padding: 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  text-overflow: ellipsis;
-  color: white;
-  background-color: #4c5963;
+	border: 1px solid #ffffff1a;
+	height: 4rem;
+	width: 100%;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	padding: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	text-overflow: ellipsis;
+	color: white;
+	background-color: #4c5963;
 }
 
 .scheduleItem:disabled {
-  background-color: rgba(255, 255, 255, 0.05);
+	background-color: rgba(255, 255, 255, 0.05);
 }
 
 .scheduleItem:disabled > i {
-  color: #747474 !important;
+	color: #747474 !important;
 }
 
 .scheduleItem > p {
-  height: 1rem;
+	height: 1rem;
 }
 
 .scheduleItem > i:last-child {
-  text-align: left;
-  width: 100%;
-  color: #9d9d9d;
+	text-align: left;
+	width: 100%;
+	color: #9d9d9d;
 }
 
 .modalContainer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  opacity: 1;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 999;
+	opacity: 1;
 }
 
 .modalContainer.fade {
-  animation: fadeIn 0.2s ease-in-out forwards;
+	animation: fadeIn 0.2s ease-in-out forwards;
 }
 
 .modalContainer:not(.fade) {
-  animation: fadeOut 0.2s ease-in-out forwards;
+	animation: fadeOut 0.2s ease-in-out forwards;
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 @keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
 }
 
 .modalTitle {
-  margin: 1.5rem 0 1rem;
+	margin: 1.5rem 0 1rem;
 }
 
 .modalContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(calc(100% - 6rem), 300px);
-  padding: 0 2rem;
-  background: rgb(62, 64, 69);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  border: none;
-  border-radius: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: min(calc(100% - 6rem), 300px);
+	padding: 0 2rem;
+	background: rgb(62, 64, 69);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+	border: none;
+	border-radius: 0.5rem;
 }
 
 .modalContent > div {
-  width: 100%;
-  padding-bottom: 1.5rem;
+	width: 100%;
+	padding-bottom: 1.5rem;
 }
 
 .inputs {
-  display: flex;
-  justify-content: space-evenly;
+	display: flex;
+	justify-content: space-evenly;
 }
 
 .buttons {
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 .buttons > button:first-child {
-  border: none;
-  border-radius: 0.5rem;
-  background-color: transparent;
-  border: none;
-  color: #9d9d9d;
+	border: none;
+	border-radius: 0.5rem;
+	background-color: transparent;
+	border: none;
+	color: #9d9d9d;
 }
 
 .buttons > button:last-child {
-  background-color: #54808c;
-  color: #d7e2ec;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  border: none;
-  border-radius: 5px;
-  padding: 0.5rem;
-  height: 2rem;
-  width: 91px;
+	background-color: #54808c;
+	color: #d7e2ec;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+	border: none;
+	border-radius: 5px;
+	padding: 0.5rem;
+	height: 2rem;
+	width: 91px;
 }
 
 .buttons > button:last-child:disabled {
-  background-color: rgb(51, 54, 60) !important;
-  color: #646464 !important;
+	background-color: rgb(51, 54, 60) !important;
+	color: #646464 !important;
 }
 
 button {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .modalContent input {
-  padding: 0.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 5px;
-  width: 40%;
-  color: #d7e2ec;
+	padding: 0.5rem;
+	background: rgba(255, 255, 255, 0.05);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	border-radius: 5px;
+	width: 40%;
+	color: #d7e2ec;
 }
 
 .modalContent input:disabled {
-  opacity: 0.4 !important;
+	opacity: 0.4 !important;
 }
 
 .modalContent input::placeholder {
-  color: #d7e2ec90;
+	color: #d7e2ec90;
 }
 
 .deleteModalContent {
-  background-color: rgb(62, 64, 69);
-  display: flex;
-  padding: 2rem;
-  border-radius: 0.5rem;
-  flex-direction: column;
-  gap: 1rem;
-  width: min(calc(100% - 6rem), 300px);
-  overflow: scroll;
-  max-height: 70vh;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+	background-color: rgb(62, 64, 69);
+	display: flex;
+	padding: 2rem;
+	border-radius: 0.5rem;
+	flex-direction: column;
+	gap: 1rem;
+	width: min(calc(100% - 6rem), 300px);
+	overflow: scroll;
+	max-height: 70vh;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .deleteModalContent > h3 {
-  margin: 0;
+	margin: 0;
 }
 
 .deleteModalContent > span {
-  line-height: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+	line-height: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 }
 
 .deleteModalContent > div {
-  display: flex;
-  gap: 1rem;
-  flex-direction: row;
-  justify-content: flex-end;
+	display: flex;
+	gap: 1rem;
+	flex-direction: row;
+	justify-content: flex-end;
 }
 
 .deleteModalContent > div > button {
-  background-color: transparent;
-  border: none;
-  color: #9d9d9d;
+	background-color: transparent;
+	border: none;
+	color: #9d9d9d;
 }
 
 .deleteModalContent > div > button:last-child {
-  background-color: rgb(218, 54, 60);
-  border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
-  color: white;
-  width: 5rem;
+	background-color: rgb(218, 54, 60);
+	border-radius: 0.5rem;
+	padding: 0.5rem 1rem;
+	color: white;
+	width: 5rem;
 }
 
 .deleteModalContent > div > button:last-child > .loadingRing {
-  height: 1rem;
-  top: calc(50% - 0.5rem);
+	height: 1rem;
+	top: calc(50% - 0.5rem);
 }
 
 .deleteModalContent > div > button:last-child > .loadingRing > div {
-  height: 1rem;
-  width: 1rem;
-  border: 3px solid #d7e2ec;
-  border-color: #d7e2ec transparent transparent transparent;
+	height: 1rem;
+	width: 1rem;
+	border: 3px solid #d7e2ec;
+	border-color: #d7e2ec transparent transparent transparent;
 }
 
 .cell {
-  height: 2rem;
-  margin: 0.2rem 0;
-  background: rgb(175 175 175 / 40%);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  border: none;
-  border-radius: 5px;
-  width: 100%;
-  color: #d7e2ec;
-  padding: 0;
+	height: 2rem;
+	margin: 0.2rem 0;
+	background: rgb(175 175 175 / 40%);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+	border: none;
+	border-radius: 5px;
+	width: 100%;
+	color: #d7e2ec;
+	padding: 0;
 }
 
 .selected {
-  background-color: #4c5963;
-  border: 3px solid #54808c;
+	background-color: #4c5963;
+	border: 3px solid #54808c;
 }
 
 .disabled {
-  background: rgba(255, 255, 255, 0);
-  color: #646464;
+	background: rgba(255, 255, 255, 0);
+	color: #646464;
 }
 
 .subtext {
-  color: #d7e2ec70;
-  font-size: small;
-  text-align: center;
-  margin-top: 0.5rem;
+	color: #d7e2ec70;
+	font-size: small;
+	text-align: center;
+	margin-top: 0.5rem;
 }
 
 .missingData {
-  background-color: #747474;
+	background-color: #747474;
 }
 
 .missingData > i {
-  color: #d7e2ec !important;
+	color: #d7e2ec !important;
 }
 
 .labels {
-  width: 1.5rem !important;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 0 0 0 0.5rem !important;
+	width: 1.5rem !important;
+	background-color: rgba(255, 255, 255, 0.05);
+	border-radius: 0 0 0 0.5rem !important;
 }
 
 .labels > div {
-  height: calc(4rem - 2px);
-  display: flex;
-  width: 1.5rem;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  border-top: 2px #ffffff1a solid;
-  flex-direction: column;
+	height: calc(4rem - 2px);
+	display: flex;
+	width: 1.5rem;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	border-top: 2px #ffffff1a solid;
+	flex-direction: column;
 }
 
 .labels > div:first-child {
-  border: 1px #ffffff00;
-  border-style: solid none none;
+	border: 1px #ffffff00;
+	border-style: solid none none;
 }
 
 .labels > div > span {
-  font-weight: lighter;
-  color: #9d9d9d;
+	font-weight: lighter;
+	color: #9d9d9d;
 }
 
 .header {
-  display: flex;
-  align-items: center;
-  gap: 4px;
+	display: flex;
+	align-items: center;
+	gap: 4px;
 }
 
 .header > button {
-  background: none;
-  border: 2px solid #80a4ae;
-  border-radius: 10px;
-  color: #80a4ae;
-  font-weight: 600;
-  font-size: 14px;
-  padding: 8px 16px;
-  text-decoration: none;
-  /* width: 4rem;  */
+	background: none;
+	border: 2px solid #80a4ae;
+	border-radius: 10px;
+	color: #80a4ae;
+	font-weight: 600;
+	font-size: 14px;
+	padding: 8px 16px;
+	text-decoration: none;
+	/* width: 4rem;  */
 }
 
 .header > button:hover {
-  background: #80a4ae22;
+	background: #80a4ae22;
 }
 
 .loadingRing {
-  position: relative;
-  height: 32rem;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.05);
-  border-radius: 0 0 0.5rem 0;
-  left: auto;
+	position: relative;
+	height: 32rem;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	justify-content: center;
+	background-color: rgba(255, 255, 255, 0.05);
+	border-radius: 0 0 0.5rem 0;
+	left: auto;
 }
 
 button > .loadingRing {
-  height: 2rem;
-  background: none;
+	height: 2rem;
+	background: none;
 }
 
 button > .loadingRing > div {
-  height: 1.5rem;
-  width: 1.5rem;
-  border: 4px solid #80a4ae;
-  border-color: #80a4ae transparent transparent transparent;
+	height: 1.5rem;
+	width: 1.5rem;
+	border: 4px solid #80a4ae;
+	border-color: #80a4ae transparent transparent transparent;
 }
 
 .buttons > button > .loadingRing {
-  height: 2rem;
-  top: calc(50% - 1rem);
+	height: 2rem;
+	top: calc(50% - 1rem);
 }
 .buttons > button > .loadingRing > div {
-  height: 1rem;
-  width: 1rem;
-  border: 3px solid #d7e2ec;
-  border-color: #d7e2ec transparent transparent transparent;
+	height: 1rem;
+	width: 1rem;
+	border: 3px solid #d7e2ec;
+	border-color: #d7e2ec transparent transparent transparent;
 }
 
 .deleteButton {
-  height: 1.375rem;
-  width: 1.375rem;
-  padding: 0;
-  border: none;
-  background: none;
-  line-height: 1.5rem;
-  border-radius: 0.5rem;
-  color: white;
-  position: absolute;
-  right: 2rem;
-  top: 1.5rem;
+	height: 1.375rem;
+	width: 1.375rem;
+	padding: 0;
+	border: none;
+	background: none;
+	line-height: 1.5rem;
+	border-radius: 0.5rem;
+	color: white;
+	position: absolute;
+	right: 2rem;
+	top: 1.5rem;
 }
 
 .deleteButton > span {
-  font-size: 1.25rem;
-  width: 1.375rem;
-  line-height: 1.375rem;
-  height: 1.375rem;
+	font-size: 1.25rem;
+	width: 1.375rem;
+	line-height: 1.375rem;
+	height: 1.375rem;
 }
 
 .confirmDeleteModal {
-  background-color: red;
-  top: calc(50% - 15rem + 9px);
+	background-color: red;
+	top: calc(50% - 15rem + 9px);
 }
