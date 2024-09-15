@@ -57,7 +57,7 @@
 
 .desktopHeader > div > div:last-of-type,
 .header > div > div:last-of-type {
-	width: 1.5rem;
+	width: 42px;
 }
 
 .button:active {
@@ -87,8 +87,8 @@
 	top: 0;
 	left: 0;
 	margin: 0;
-	padding: 0.5rem 7vw;
-	width: 86vw;
+	padding: 0.5rem calc(7vw - 9px);
+	width: calc(86vw + 18px);
 	background: rgba(255, 255, 255, 0.05);
 	line-height: 1rem;
 	height: 26px;
@@ -114,7 +114,12 @@
 }
 
 .desktopHeader > div > button {
-	margin-right: 0.5rem;
+	height: 24px;
+	width: 24px;
+}
+
+.desktopHeader > div > div:last-child {
+	width: 24px;
 }
 
 .desktopSocial {
@@ -134,6 +139,8 @@
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	-webkit-user-select: none;
 	user-select: none;
+	height: 42px;
+	width: 42px;
 }
 
 .friendItem {

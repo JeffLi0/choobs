@@ -248,7 +248,7 @@ const CalendarExport = ({ schoolYear, scheduleData }) => {
 								.
 							</li>
 							<li>Click the plus icon in the left sidebar.</li>
-							<li>Select “Add calendar” and “Create new calendar” in the left sidebar,</li>
+							<li>Select “Add calendar” and “Create new calendar” in the left sidebar.</li>
 							<li>Create a new calendar (Optional but highly recommended).</li>
 							<li>Click "Import & Export" on the left sidebar.</li>
 							<li>Click "Select file from your computer" and choose the .ics file.</li>
