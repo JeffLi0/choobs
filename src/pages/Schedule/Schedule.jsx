@@ -417,11 +417,6 @@ function Schedule(props) {
 	const handleTouchEnd = () => {
 		let distanceSwiped = touchStartX - touchEnd;
 		if (Math.abs(distanceSwiped) > SWIPE_SENSITIVITY && swipeTriggeredX) {
-			if (distanceSwiped < 0) {
-				handleDateChange(-1);
-			} else if (distanceSwiped > 0) {
-				handleDateChange(1);
-			}
 			setSwipeEnded(true);
 			setSwipeOffset(swipeOffset * 2);
 
@@ -438,6 +433,11 @@ function Schedule(props) {
 						}, 200);
 					}, 200);
 				}, 10);
+				if (distanceSwiped < 0) {
+					handleDateChange(-1);
+				} else if (distanceSwiped > 0) {
+					handleDateChange(1);
+				}
 			}, 50);
 		} else {
 			setSwipeEnded(true);
