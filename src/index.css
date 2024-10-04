@@ -185,9 +185,3 @@ div > .react-datepicker__day--outside-month {
 :root::-webkit-scrollbar {
 	display: none;
 }
-
-*,
-::before,
-::after {
-	transition: all 0.2s ease;
-}

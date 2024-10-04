@@ -24,11 +24,11 @@
 		"react-dom": "^18.3.1",
 		"react-router-dom": "^6.26.2",
 		"react-scripts": "5.0.1",
-		"vite": "^5.4.5",
+		"vite": "^5.4.6",
 		"web-vitals": "^2.1.4"
 	},
 	"scripts": {
-		"dev": "vite",
+		"dev": "vite --host",
 		"update-service-worker": "node updateServiceWorker.js",
 		"build": "vite build && npm run update-service-worker",
 		"format": "prettier --write ."

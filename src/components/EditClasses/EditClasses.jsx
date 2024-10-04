@@ -11,8 +11,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import styles from "./EditClasses.module.css";
 
 import CalendarExport from "../../components/CalendarExport/CalendarExport";
-
-import { getSchedule } from "./pdf";
+import ImportSchedule from "../../components/ImportSchedule/ImportSchedule";
 
 function EditClasses() {
 	const [subject, setSubject] = useState("");
@@ -346,59 +345,6 @@ function EditClasses() {
 			fetchScheduleData();
 		}
 	}, [uid]);
-
-	/**
-	 * @param {(import('@haelp/schedule-parse').Course | null)[]} schedule
-	 */
-	const updateFromSchedule = async (schedule) => {
-		try {
-			const auth = getAuth();
-			const user = await new Promise((resolve, reject) => {
-				const unsubscribe = onAuthStateChanged(
-					auth,
-					(user) => {
-						unsubscribe();
-						resolve(user);
-					},
-					reject,
-				);
-			});
-
-			const uid = user.uid;
-
-			const classes = {};
-
-			const nameRemap = {
-				"Adolescent Health Issues II": "Health",
-				"Adolescent Health Issues I": "Health",
-				"AP United States History": "APUSH",
-				"Homeroom/Advisory": "Advisory",
-				"American Literature": "English",
-			};
-
-			schedule.forEach((block) => {
-				if (block && block.schedule === "HR") block.block = "Adv";
-				if (block && block.description in nameRemap) {
-					block.description = nameRemap[block.description];
-				}
-				if (block) {
-					classes[block.block] = [block.description, block.room];
-				}
-			});
-
-			await setDoc(doc(db, "users", uid), { classes }, { merge: true });
-			await refreshScheduleData();
-
-			setSubject("");
-			setRoomNumber("");
-			setSelectedClasses([]);
-			closeDeleteModal();
-			closeModal();
-			setButtonLoading(false);
-		} catch (error) {
-			console.error("Error adding/deleting documents: ", error);
-		}
-	};
 
 	const handleBlockSelect = (id) => {
 		setSelectedClasses((prevSelected) => {
@@ -812,6 +758,8 @@ function EditClasses() {
 	return (
 		<>
 			<div className={styles.editClasses}>
+				<ImportSchedule refreshScheduleData={refreshScheduleData} />
+
 				<div className={styles.header}>
 					<div>
 						<h3>Edit Classes</h3>
@@ -820,25 +768,7 @@ function EditClasses() {
 						</span>
 					</div>
 
-					<button
-						onClick={async () => {
-							setLoading(true);
-							try {
-								/** @type {import('@haelp/schedule-parse').APIRes} */
-								const { schedule } = await getSchedule(1);
-								if (!schedule.some((s) => s))
-									throw new Error("Invalid PDF.");
-								updateFromSchedule(schedule);
-							} catch (e) {
-								if (!e.message.includes("showOpenFilePicker"))
-									alert("Error uploading pdf: " + e.message);
-							}
-							setLoading(false);
-						}}
-						style={{ whiteSpace: "nowrap", marginLeft: "auto" }}
-					>
-						Import from PDF
-					</button>
+					
 					<button
 						onClick={() => {
 							setLoading(true);
@@ -858,6 +788,7 @@ function EditClasses() {
 						)}
 					</button>
 				</div>
+
 				<div className={styles.schedule}>
 					<div className={styles.dayLabels}>
 						<span className={styles.labels} />

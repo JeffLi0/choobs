@@ -1,0 +1,153 @@
+.category {
+	padding: 0 0 1rem 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	align-items: flex-start;
+}
+
+.category > span,
+.label > div > span {
+	color: #d7e2ec70;
+	font-size: small;
+}
+
+.category > button {
+	background-color: #54808c;
+	border-radius: 0.5rem;
+	padding: 0.5rem 1rem;
+	color: white;
+	border: none;
+	height: 2rem;
+}
+
+.modalContainer {
+	position: fixed;
+	top: 50vh;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: rgba(0, 0, 0, 0.5);
+	height: 100vh;
+	width: 100vw;
+	z-index: 100;
+	opacity: 0;
+	transition: all 0.3s ease-in-out;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modalContainer.fade {
+	animation: fadeIn 0.2s ease-in-out forwards;
+}
+
+.modalContainer:not(.fade) {
+	animation: fadeOut 0.2s ease-in-out forwards;
+}
+
+@keyframes slideIn {
+	from {
+		opacity: 0;
+		margin-top: 0;
+	}
+	to {
+		opacity: 1;
+		margin-top: 1;
+	}
+}
+
+@keyframes slideOut {
+	from {
+		opacity: 1;
+		margin-top: 1;
+	}
+	to {
+		opacity: 0;
+		margin-top: 0;
+	}
+}
+
+.modalContent.slide {
+	animation: slideIn 0.2s ease-in-out forwards;
+}
+
+.modalContent:not(.slide) {
+	animation: slideOut 0.2s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+.modalContent {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: min(calc(100% - 6rem), 24rem);
+	background: rgb(62, 64, 69);
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+	border: none;
+	border-radius: 0.5rem;
+	padding: 2rem;
+	gap: 1.5rem;
+}
+
+.mobileModal {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.mobileModal > div {
+	margin: 1rem;
+	width: calc(100% - 6rem);
+}
+
+.modalContent > div > button {
+	background-color: #54808c;
+	border-radius: 0.5rem;
+	padding: 0.5rem 1rem;
+	color: white;
+	border: none;
+	height: 2rem;
+}
+
+.modalContent > ol {
+	margin: 0;
+	padding-left: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.link {
+	color: #80a4ae;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 2px;
+}
+
+.modalContent > span {
+	color: #abbac7;
+    font-size: small;
+    text-align: center;
+}
+
+@supports (-webkit-touch-callout: none) {
+	.mobileModal > .modalContent {
+		margin-top: calc(env(safe-area-inset-top));
+	}
+}
