@@ -161,44 +161,56 @@ function Social() {
 		};
 
 		const fetchData = async () => {
-			try {
-				const response = await axios.get(
-					"https://www.googleapis.com/calendar/v3/calendars/lexingtonma.org_qud45cvitftvgc317tsd2vqctg%40group.calendar.google.com/events",
-					{
-						params: {
-							calendarId:
-								"lexingtonma.org_qud45cvitftvgc317tsd2vqctg@group.calendar.google.com",
-							singleEvents: true,
-							timeZone: "America/New_York",
-							maxResults: 20,
-							timeMin: `${displayDate.toISOString().split("T")[0]}T04:00:00-04:00`,
-							timeMax: `${displayDate.toISOString().split("T")[0]}T23:59:59-04:00`,
-							key: "AIzaSyBNlYH01_9Hc5S1J9vuFmu2nUqBZJNAXxs",
+			// const dateKey = displayDate.toISOString().split("T")[0];
+
+			// const cachedData = sessionStorage.getItem("events");
+			// let parsedCache = cachedData ? JSON.parse(cachedData) : {};
+
+			// if (parsedCache[dateKey]) {
+			// 	setEvents(parsedCache[dateKey]);
+			// } else {
+				try {
+					const response = await axios.get(
+						"https://www.googleapis.com/calendar/v3/calendars/lexingtonma.org_qud45cvitftvgc317tsd2vqctg%40group.calendar.google.com/events",
+						{
+							params: {
+								calendarId:
+									"lexingtonma.org_qud45cvitftvgc317tsd2vqctg@group.calendar.google.com",
+								singleEvents: true,
+								timeZone: "America/New_York",
+								maxResults: 20,
+								timeMin: `${displayDate.toISOString().split("T")[0]}T04:00:00-04:00`,
+								timeMax: `${displayDate.toISOString().split("T")[0]}T23:59:59-04:00`,
+								key: "AIzaSyBNlYH01_9Hc5S1J9vuFmu2nUqBZJNAXxs",
+							},
 						},
-					},
-				);
-
-				const currentDayEvents = response.data.items.filter((event) => {
-					const eventStartDate = new Date(
-						event.start.dateTime || event.start.date,
 					);
-					const isFullDayEvent =
-						!event.start.dateTime && !event.end.dateTime;
 
-					return (
-						(eventStartDate.getDate() === displayDate.getDate() &&
-							eventStartDate.getMonth() ===
-								displayDate.getMonth() &&
-							eventStartDate.getFullYear() ===
-								displayDate.getFullYear()) ||
-						isFullDayEvent
+					const currentDayEvents = response.data.items.filter(
+						(event) => {
+							const eventStartDate = new Date(
+								event.start.dateTime || event.start.date,
+							);
+							const isFullDayEvent =
+								!event.start.dateTime && !event.end.dateTime;
+
+							return (
+								(eventStartDate.getDate() ===
+									displayDate.getDate() &&
+									eventStartDate.getMonth() ===
+										displayDate.getMonth() &&
+									eventStartDate.getFullYear() ===
+										displayDate.getFullYear()) ||
+								isFullDayEvent
+							);
+						},
 					);
-				});
-				setEvents(currentDayEvents);
-			} catch (error) {
-				console.error("Error fetching calendar events:", error);
-				fetchData();
-			}
+					setEvents(currentDayEvents);
+				} catch (error) {
+					console.error("Error fetching calendar events:", error);
+					fetchData();
+				}
+			// }
 		};
 
 		const interval = setInterval(() => {

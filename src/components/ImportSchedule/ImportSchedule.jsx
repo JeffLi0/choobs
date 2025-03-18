@@ -147,16 +147,14 @@ function ImportSchedule(props) {
 									try {
 										/** @type {import('@haelp/schedule-parse').APIRes} */
 										const { schedule } =
-											await getSchedule(1);
+											await getSchedule(2);
 										if (!schedule.some((s) => s))
 											throw new Error("Invalid PDF.");
 										updateFromSchedule(schedule);
 									} catch (e) {
 										if (
-											!e.message.includes(
-												"showOpenFilePicker",
-											)
-										)
+											!(e.message.includes("showOpenFilePicker") || e.message.includes("The user aborted a request"))
+										)	
 											alert(
 												"Error uploading pdf: " +
 													e.message,
