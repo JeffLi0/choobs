@@ -955,9 +955,21 @@ function Schedule(props) {
 
 								const matchingData = scheduleData.find(
 									(data) => {
-										return event.summary.includes(
-											data.block,
-										);
+										if (fullDayEvent.some(element => element === "All blocks")) {
+											// On "All blocks" day, remove dollar signs from Firebase data for comparison
+											const firebaseBlockWithoutDollar =
+												data.block.replace("$", "");
+											return (
+												firebaseBlockWithoutDollar ===
+													event.summary ||
+												data.block === event.summary
+											);
+										} else {
+											// Regular day - exact match required
+											return data.block.includes(
+												event.summary,
+											);
+										}
 									},
 								);
 
