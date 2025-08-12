@@ -130,7 +130,7 @@ function ImportSchedule(props) {
 							<li>Click the "My Info" tab.</li>
 							<li>
 								Click on "Reports" then "Student Schedule HS
-								(Portal) for 2025". It should open a new tab.
+								(Portal) for 2026". It should open a new tab.
 							</li>
 							<li>
 								In the new tab, click "Run". It should download
@@ -147,7 +147,7 @@ function ImportSchedule(props) {
 									try {
 										/** @type {import('@haelp/schedule-parse').APIRes} */
 										const { schedule } =
-											await getSchedule(2);
+											await getSchedule(1); // semester
 										if (!schedule.some((s) => s))
 											throw new Error("Invalid PDF.");
 										updateFromSchedule(schedule);
