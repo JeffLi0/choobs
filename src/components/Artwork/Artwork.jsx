@@ -13,6 +13,7 @@ function Artwork(props) {
 			"stargazing",
 			"jammin",
 			"plane",
+			"cat",
 		],
 		[],
 	);

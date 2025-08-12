@@ -801,7 +801,7 @@ function EditClasses() {
 					</div>
 					{renderSchedule()}
 				</div>
-				<CalendarExport schoolYear={2025} scheduleData={scheduleData} />
+				<CalendarExport schoolYear={2026} scheduleData={scheduleData} />
 				{showClassesModal && (
 					<div
 						className={`${styles.modalContainer} ${modalFade ? styles.fade : ""}`}

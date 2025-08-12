@@ -323,7 +323,7 @@ const CalendarExport = ({ schoolYear, scheduleData }) => {
 		const url = URL.createObjectURL(blob);
 		const link = document.createElement("a");
 		link.href = url;
-		link.download = `school_calendar_${schoolYear - 1}-${schoolYear}.ics`;
+		link.download = `choobs_export.ics`;
 		document.body.appendChild(link);
 		link.click();
 		document.body.removeChild(link);
