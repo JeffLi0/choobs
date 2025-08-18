@@ -57,7 +57,7 @@ function Login(props) {
 			setLoading(false);
 			return;
 		} else {
-			if (!/^(25|26|27|28)stu\d{3}@lexingtonma\.org$/.test(email)) {
+			if (!/^(25|26|27|28|29)stu\d{3}@lexingtonma\.org$/.test(email)) {
 				setErrorMessage("Please use your Lexington email.");
 				setLoading(false);
 				return;
