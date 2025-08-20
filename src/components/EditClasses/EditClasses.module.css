@@ -241,6 +241,10 @@ button {
 	transform: translate(-50%, -50%);
 }
 
+.deleteModalContent::-webkit-scrollbar {
+	display: none;
+}
+
 .deleteModalContent > h3 {
 	margin: 0;
 }

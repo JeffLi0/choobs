@@ -384,6 +384,10 @@ div > div > div.scheduleContainer > div:first-of-type {
 	max-height: 70vh;
 }
 
+.modalContent::-webkit-scrollbar {
+	display: none;
+}
+
 .modalContainer.fade {
 	animation: fadeIn 0.2s ease-in-out forwards;
 }

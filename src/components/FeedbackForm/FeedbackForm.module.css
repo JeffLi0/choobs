@@ -82,6 +82,10 @@
 	right: 1rem;
 }
 
+.modalContent::-webkit-scrollbar {
+	display: none;
+}
+
 .modalContainer.mobileModal {
 	display: flex;
 	flex-direction: column;

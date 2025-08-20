@@ -313,6 +313,10 @@ input:checked + .switchSlider:before {
 	max-height: 70vh;
 }
 
+.modalContent::-webkit-scrollbar {
+	display: none;
+}
+
 .modalContainer.mobileModal {
 	display: flex;
 	flex-direction: column;
