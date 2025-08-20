@@ -1,6 +1,7 @@
 import { getSchedule } from "./pdf";
 import styles from "./ImportSchedule.module.css";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { setDoc, doc, updateDoc } from "firebase/firestore"; // Make sure to import updateDoc
 import React, { useState, useEffect } from "react";
 
 function ImportSchedule(props) {
@@ -62,7 +63,7 @@ function ImportSchedule(props) {
 				}
 			});
 
-			await setDoc(doc(db, "users", uid), { classes }, { merge: true });
+			await updateDoc(doc(db, "users", uid), { classes });
 			console.log("[ImportSchedule] Successfully imported schedule");
 			await props.refreshScheduleData();
 			closeModal();
