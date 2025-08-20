@@ -203,3 +203,49 @@
 		}
 	}
 }
+
+.form {
+	transition:
+		opacity 0.3s ease,
+		transform 0.3s ease;
+}
+
+.formFadeOut {
+	opacity: 0;
+	transform: translateY(-10px);
+}
+
+.submitting {
+	opacity: 0.7;
+	cursor: not-allowed;
+}
+
+.thankYou {
+	height: 19.5rem;
+	padding: 0 1rem;
+	display: flex;
+	flex-direction: column !important;
+	align-items: center !important;
+	justify-content: center !important;
+	text-align: center !important;
+	opacity: 0;
+	transform: translateY(20px);
+	transition:
+		opacity 0.1s linear,
+		transform 0.1s linear;
+}
+
+.thankYouShow {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.thankYou h3 {
+	font-size: 1.5rem;
+}
+
+.thankYou p {
+	margin: 0;
+	font-size: 1rem;
+	line-height: 1.4;
+}
