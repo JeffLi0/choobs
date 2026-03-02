@@ -863,8 +863,9 @@ function Schedule(props) {
 										}
 									} else {
 										if (/^Lunch \d+$/.test(event.summary)) {
+											var lastBlock;
 											try {
-												const lastBlock = events.find(
+												lastBlock = events.find(
 													(event) =>
 														[
 															"F1",
