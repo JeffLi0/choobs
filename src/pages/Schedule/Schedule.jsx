@@ -863,17 +863,21 @@ function Schedule(props) {
 										}
 									} else {
 										if (/^Lunch \d+$/.test(event.summary)) {
-											const lastBlock = events.find(
-												(event) =>
-													[
-														"F1",
-														"D2",
-														"C2",
-														"F3",
-														"D4",
-														"C4",
-													].includes(event.summary),
-											).summary;
+											try {
+												const lastBlock = events.find(
+													(event) =>
+														[
+															"F1",
+															"D2",
+															"C2",
+															"F3",
+															"D4",
+															"C4",
+														].includes(event.summary),
+												).summary;
+											} catch {
+												return false;
+											}
 
 											try {
 												const lastBlockRoom =
