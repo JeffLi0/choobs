@@ -12,6 +12,7 @@ import styles from "./EditClasses.module.css";
 
 import CalendarExport from "../../components/CalendarExport/CalendarExport";
 import ImportSchedule from "../../components/ImportSchedule/ImportSchedule";
+import { getCurrentSchoolYear } from "../../utils/schoolYear";
 
 function EditClasses() {
 	const [subject, setSubject] = useState("");
@@ -801,7 +802,10 @@ function EditClasses() {
 					</div>
 					{renderSchedule()}
 				</div>
-				<CalendarExport schoolYear={2026} scheduleData={scheduleData} />
+				<CalendarExport
+					schoolYear={getCurrentSchoolYear()}
+					scheduleData={scheduleData}
+				/>
 				{showClassesModal && (
 					<div
 						className={`${styles.modalContainer} ${modalFade ? styles.fade : ""}`}

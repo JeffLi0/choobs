@@ -66,7 +66,7 @@ function Artwork(props) {
 					<span
 						className={`${styles.subtext} ${!props.loading ? styles.visible : ""}`}
 					>
-						Artwork by Eric Li
+						Artwork by Eric Li '25
 					</span>
 				</>
 			)}

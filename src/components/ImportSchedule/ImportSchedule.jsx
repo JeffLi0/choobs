@@ -1,5 +1,6 @@
 import { getSchedule } from "./pdf";
 import styles from "./ImportSchedule.module.css";
+import { getCurrentSchoolYear } from "../../utils/schoolYear";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { setDoc, doc, updateDoc } from "firebase/firestore"; // Make sure to import updateDoc
 import React, { useState, useEffect } from "react";
@@ -131,7 +132,8 @@ function ImportSchedule(props) {
 							<li>Click the "My Info" tab.</li>
 							<li>
 								Click on "Reports" then "Student Schedule HS
-								(Portal) for 2026". It should open a new tab.
+								(Portal) for {getCurrentSchoolYear()}". It should
+								open a new tab.
 							</li>
 							<li>
 								In the new tab, click "Run". It should download

@@ -434,7 +434,7 @@ function Settings(props) {
 							Log Out
 						</button>
 						<div className={styles.subtext}>
-							<span>Made with ❤️ by Jeff Li</span>
+							<span>Made with ❤️ by Jeff Li '26</span>
 							{/* <button>Special Thanks</button> */}
 						</div>
 						{showLogoutModal && (
