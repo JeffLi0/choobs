@@ -86,7 +86,7 @@ function FeedbackForm(props) {
 
 				// Submit the form
 				fetch(
-					"https://script.google.com/macros/s/AKfycbzphgkALt2G8jUwN2c1YYq7kvLyLpMlXsiszJ3xWs9N3Ts5V5eT8zA2x7pFSfe0htKu0w/exec",
+					"https://script.google.com/macros/s/AKfycbxBcrUh0GG9v0r-iEOpyb5lLyOLg1ArNlen-3bk2Rfq37sy-rVpQLQ3zhFIPTWkrTqrEA/exec",
 					{
 						method: "POST",
 						body: formDatab,
