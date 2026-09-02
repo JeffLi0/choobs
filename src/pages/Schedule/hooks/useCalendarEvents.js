@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const CALENDAR_ID =
+export const CALENDAR_ID =
 	"lexingtonma.org_qud45cvitftvgc317tsd2vqctg@group.calendar.google.com";
 const GOOGLE_CALENDAR_API_KEY = import.meta.env.VITE_GOOGLE_CALENDAR_API_KEY;
 const CACHE_SIZE = 10;

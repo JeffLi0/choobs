@@ -210,3 +210,68 @@ button > .loadingRing > div {
 	border: 3px solid #d7e2ec;
 	border-color: #d7e2ec transparent transparent transparent;
 }
+
+.mergeOverlay {
+	position: fixed;
+	inset: 0;
+	z-index: 100;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1.5rem;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.mergeModal {
+	max-width: 24rem;
+	width: 100%;
+	padding: 1.5rem;
+	border-radius: 1rem;
+	background-color: rgb(51, 54, 60);
+	color: white;
+	box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+	text-align: center;
+}
+
+.mergeModal > h2 {
+	margin: 0 0 0.75rem;
+	font-size: 1.25rem;
+}
+
+.mergeModal > p {
+	margin: 0 0 1.25rem;
+	color: #c3ccd4;
+	line-height: 1.4;
+}
+
+.mergeButtons {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+}
+
+.mergeKeepLocal,
+.mergeKeepSaved {
+	border: none;
+	border-radius: 0.5rem;
+	padding: 0.75rem 1rem;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: opacity 0.15s ease;
+}
+
+.mergeKeepLocal {
+	background-color: #54808c;
+	color: white;
+}
+
+.mergeKeepSaved {
+	background-color: transparent;
+	color: #c3ccd4;
+	border: 1px solid #4c5963;
+}
+
+.mergeKeepLocal:hover,
+.mergeKeepSaved:hover {
+	opacity: 0.8;
+}

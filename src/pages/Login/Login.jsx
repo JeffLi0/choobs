@@ -10,6 +10,11 @@ import {
 import { doc, setDoc } from "firebase/firestore";
 
 import styles from "./Login.module.css";
+import {
+	getPendingSchedule,
+	hasPendingSchedule,
+	clearPendingSchedule,
+} from "../LandingPage/pendingSchedule";
 
 function Login(props) {
 	const [email, setEmail] = useState("");
@@ -22,8 +27,34 @@ function Login(props) {
 	const [isLogin, setIsLogin] = useState(props.isLogin);
 	const [loading, setLoading] = useState(false);
 
+	// When a returning user signs in with classes they entered while logged out,
+	// we hold their uid here to ask whether to merge that local data or keep
+	// their saved schedule (see the merge-prompt modal below).
+	const [mergePromptUid, setMergePromptUid] = useState(null);
+
 	const navigate = useNavigate();
 	const buttonRef = useRef();
+
+	// Called after both sign-in and sign-up land the user in "/": drop any stale
+	// cached schedule so the Schedule page refetches the (possibly just-migrated)
+	// Firestore data.
+	const finishAuth = () => {
+		sessionStorage.removeItem("scheduleData");
+		navigate("/");
+	};
+
+	const resolveMerge = async (keepLocal) => {
+		if (keepLocal) {
+			await setDoc(
+				doc(db, "users", mergePromptUid),
+				{ classes: getPendingSchedule() },
+				{ merge: true },
+			);
+		}
+		clearPendingSchedule();
+		setMergePromptUid(null);
+		finishAuth();
+	};
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
@@ -34,8 +65,18 @@ function Login(props) {
 			return;
 		} else {
 			try {
-				await signInWithEmailAndPassword(auth, email, password);
-				navigate("/");
+				const userCredential = await signInWithEmailAndPassword(
+					auth,
+					email,
+					password,
+				);
+				if (hasPendingSchedule()) {
+					// Let the user decide before we touch their saved schedule.
+					setMergePromptUid(userCredential.user.uid);
+					setLoading(false);
+					return;
+				}
+				finishAuth();
 			} catch (error) {
 				setErrorMessage(error.message);
 				setLoading(false);
@@ -92,7 +133,8 @@ function Login(props) {
 					"🙂",
 				];
 				setDoc(userCollectionRef, {
-					classes: {},
+					// Seed with any classes entered while logged out (empty {} otherwise).
+					classes: getPendingSchedule(),
 					email: email.trim(),
 					name: (firstName.trim() + " " + lastName.trim()).trim(),
 					friends: {},
@@ -101,10 +143,11 @@ function Login(props) {
 						emailNotifications: true,
 					},
 				});
+				clearPendingSchedule();
 				setErrorMessage(
 					"Please check your email to verify your account.",
 				);
-				navigate("/");
+				finishAuth();
 			} catch (error) {
 				console.error(error);
 				setErrorMessage(error.message);
@@ -225,6 +268,31 @@ function Login(props) {
 
 	return (
 		<>
+			{mergePromptUid && (
+				<div className={styles.mergeOverlay}>
+					<div className={styles.mergeModal}>
+						<h2>Save your entered classes?</h2>
+						<p>
+							You added classes before signing in. Merge them into
+							your saved schedule, or keep your existing schedule?
+						</p>
+						<div className={styles.mergeButtons}>
+							<button
+								className={styles.mergeKeepLocal}
+								onClick={() => resolveMerge(true)}
+							>
+								Merge them in
+							</button>
+							<button
+								className={styles.mergeKeepSaved}
+								onClick={() => resolveMerge(false)}
+							>
+								Keep my saved schedule
+							</button>
+						</div>
+					</div>
+				</div>
+			)}
 			<div className={styles.loginPage}>
 				<div className={styles.page}>
 					<Link to="/" className={styles.back}>

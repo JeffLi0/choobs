@@ -40,7 +40,6 @@
 	align-items: center;
 	justify-content: space-between;
 	gap: 2rem;
-	transition: all 0.2s ease-in-out;
 }
 
 .desktopHeader > div > div {
@@ -110,7 +109,6 @@
 	align-items: center;
 	justify-content: space-between;
 	gap: 2rem;
-	transition: all 0.2s ease-in-out;
 }
 
 .desktopHeader > div > button {
