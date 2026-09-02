@@ -15,6 +15,7 @@ import {
 	hasPendingSchedule,
 	clearPendingSchedule,
 } from "../LandingPage/pendingSchedule";
+import { getStudentEmailRegex } from "../../utils/schoolYear";
 
 function Login(props) {
 	const [email, setEmail] = useState("");
@@ -98,7 +99,7 @@ function Login(props) {
 			setLoading(false);
 			return;
 		} else {
-			if (!/^(25|26|27|28|29)stu\d{3}@lexingtonma\.org$/.test(email)) {
+			if (!getStudentEmailRegex().test(email)) {
 				setErrorMessage("Please use your Lexington email.");
 				setLoading(false);
 				return;
@@ -219,7 +220,7 @@ function Login(props) {
 		buttonRef.current.disabled = true;
 		buttonRef.current.textContent = "Sending email...";
 
-		if (/^(25|26|27|28|29)stu\d{3}@lexingtonma\.org$/.test(email)) {
+		if (getStudentEmailRegex().test(email)) {
 			sendPasswordResetEmail(auth, email)
 				.then(() => {
 					let countdownTimer = 10;
