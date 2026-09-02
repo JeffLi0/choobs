@@ -12,7 +12,7 @@ const FEATURES = [
 		icon: "school",
 		title: "Built for Lexington High School",
 		description:
-			"Made for LHS by LHS students. Garunteed to always have the right schedule, even on half days and snow days.",
+			"Made for LHS by LHS students. Guaranteed to always have the right schedule, even on half days and snow days.",
 	},
 	{
 		icon: "upload_file",

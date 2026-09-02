@@ -17,11 +17,29 @@ const InstallPage = ({ setIsPWA }) => {
 			<div className={styles.instructionsStep}>
 				Just tap
 				<span>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="16"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						strokeWidth="2"
+						strokeLinecap="round"
+					>
+						<line x1="4" y1="7" x2="20" y2="7" />
+						<line x1="4" y1="12" x2="20" y2="12" />
+						<line x1="4" y1="17" x2="14" y2="17" />
+					</svg>
+				</span>
+				, then
+				<span>
 					<span className={`${"material-symbols-rounded"}`}>
 						&#xe6b8;
 					</span>
+					<span>Share</span>
 				</span>
-				and
+				and finally
 				<span>
 					<span className={`${"material-symbols-rounded"}`}>
 						&#xe146;
